@@ -1,6 +1,6 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
-import { Container, Row, Col, CardImg } from 'reactstrap';
+import { withRouter, Link, NavLink as RRNavLink, } from 'react-router-dom';
+import { Container, Row, Col, CardImg, NavLink } from 'reactstrap';
 import Text from 'react-text';
 import { Button } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
@@ -22,39 +22,58 @@ class Header extends React.Component {
     }
     render() {
         return (<div>
-            <Navbar inverse collapseOnSelect staticTop>
+            <Navbar inverse collapseOnSelect staticTop className="nav">
                 <Navbar.Header>
-                    {/* <LinkContainer to="/home"> */}
+
                     <Navbar.Brand>
-                        <a href="/">
+                        <Link to="/">
                             <img className="nav-logo" src={logo} style={{ width: 100 }} />
-                        </a>
+                        </Link>
                     </Navbar.Brand>
-                    {/* </LinkContainer> */}
+
                     <Navbar.Toggle />
                 </Navbar.Header>
-                <Navbar.Collapse>
-                    <Nav>
-                        <LinkContainer to="/">
-                            <NavItem>Home</NavItem>
-                        </LinkContainer>
-                        <LinkContainer to="/products">
-                            <NavItem>Products</NavItem>
-                        </LinkContainer>
-                        <LinkContainer to="/signup">
-                            <NavItem>Sign Up</NavItem>
-                        </LinkContainer>
-                        <LinkContainer to="/viewprofile">
-                            <NavItem>View Profile</NavItem>
-                        </LinkContainer>
-                        {this.isloggedin() ? <LinkContainer to="/logout">
-                            <NavItem>Log Out</NavItem>
-                        </LinkContainer> : <LinkContainer to="/login">
-                                <NavItem>Log In</NavItem>
-                            </LinkContainer>}
-                        <LinkContainer to="/shoppingcart">
-                            <NavItem><Icon icon={shoppingCartOutlined} className="shopping-cart-icon" /></NavItem>
-                        </LinkContainer>
+                <Navbar.Collapse>                   
+                    <Nav navbar>
+                        <NavItem>
+                            <NavLink activeClassName='active' tag={RRNavLink} exact to='/'>
+                                Home
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink activeClassName='active' tag={RRNavLink} to='/products'>
+                                Products
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink activeClassName='active' tag={RRNavLink}  to='/signup'>
+                                Sign Up
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink activeClassName='active' tag={RRNavLink} to='/viewprofile'>
+                                View Profile
+                            </NavLink>
+                        </NavItem>
+                        {
+                            this.isloggedin() ?
+                            <NavItem>
+                                <NavLink activeClassName='active' tag={RRNavLink}  to='/logout'>
+                                    Log Out
+                                </NavLink>
+                            </NavItem> 
+                            :
+                            <NavItem>
+                                <NavLink activeClassName='active' tag={RRNavLink}  to='/login'>
+                                    Log In
+                                </NavLink>
+                            </NavItem>
+                        }
+                        <NavItem>
+                            <NavLink activeClassName='active' tag={RRNavLink} to='/shoppingcart'>
+                                 <Icon icon={shoppingCartOutlined} className="shopping-cart-icon" />
+                            </NavLink>
+                        </NavItem>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

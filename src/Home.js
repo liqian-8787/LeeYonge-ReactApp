@@ -56,7 +56,6 @@ class Home extends React.Component {
                 })
         })
     }
-
     getBestSeller() {
         return new Promise((resolve, reject) => {
             fetch(`${this.apiServerUrl}/api/bestSeller`)

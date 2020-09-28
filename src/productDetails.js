@@ -1,8 +1,9 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { Button, Label ,Container} from 'reactstrap';
+import { Button, Label, Container } from 'reactstrap';
 import ShowMoreText from 'react-show-more-text';
 import cookie from 'react-cookies';
+import AddErrMessage from './AddErrMessage'
 class ProductDetails extends React.Component {
 
     constructor(props) {
@@ -12,14 +13,16 @@ class ProductDetails extends React.Component {
             cart: {},
             isAdded: false,
             errorResponses: { code: '', errors: '' },
-            successInfo: ''
+            successInfo: '',
+            isloggedin: true
         }
         this.currentPid = this.props.match.params.id;
         this.getData = this.getData.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.setCartState = this.setCartState.bind(this);
-        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;      
-        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;  
+        this.isloggedin = this.isloggedin.bind(this)
+        this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
+        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;
     }
 
     getData() {
@@ -48,12 +51,16 @@ class ProductDetails extends React.Component {
             }
         ));
     }
-
+    isloggedin() {
+        return localStorage.getItem("userData") ? true : false;
+    }
     componentDidMount() {
+
         this.getData().then((data) => {
             this.setState(() => {
                 return {
-                    product: data
+                    product: data,
+                    isloggedin: this.isloggedin()
                 }
             });
         })
@@ -91,7 +98,6 @@ class ProductDetails extends React.Component {
                     this.state.cart
                 )
             }).then(response => {
-
                 if (!response.ok) {
                     this.setState(
                         {
@@ -101,7 +107,6 @@ class ProductDetails extends React.Component {
                         }
                     )
                 } else {
-
                     this.setState({
                         successInfo: response.statusText,
                         isAdded: true
@@ -125,20 +130,18 @@ class ProductDetails extends React.Component {
     executeOnClick(isExpanded) {
         console.log(isExpanded);
     }
+
     render() {
 
         const promotionPrice = this.state.product.promotional_price;
         return (
             <div>
                 {
-                    this.state.isAdded?
-                    <Container>
-                        <div className="alert-success welcome-banner">
-                            A new product is added. Please check your <Link to='/shoppingcart' style={{textDecoration:'underline'}}>Cart</Link>
-                        </div>
-                    </Container>:<div></div>
+                    this.state.errorResponses.code || this.state.isAdded ?
+                        <AddErrMessage errorCode={this.state.errorResponses.code} isAdded={this.state.isAdded} > </AddErrMessage>
+                        : <div></div>
                 }
-                
+
                 <div className="product-details-container container">
                     <div className="product-detail">
                         <div className="float-lg-left">
@@ -147,7 +150,7 @@ class ProductDetails extends React.Component {
                             }
                         </div>
                         <form className="float-lg-right" onSubmit={(e) => { this.handleSubmit(e, this.state.product.id) }}>
-                            <h3>{this.state.product.name} </h3> 
+                            <h3>{this.state.product.name} </h3>
                             {promotionPrice ?
                                 <div>
                                     <p >Was: <span className="dollar-price origin-price">${this.state.product.price}</span></p>
@@ -171,7 +174,7 @@ class ProductDetails extends React.Component {
                             </div>
                             <br />
 
-                            <span><Button type="submit" variant="primary" >Add To Cart</Button></span>
+                            <span><button type="submit" className="btn btn-primary" onClick={this.loginErr}>Add To Cart</button></span>
 
                             <div className="product-detail-description">
                                 <hr></hr>

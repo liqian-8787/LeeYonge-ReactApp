@@ -40,16 +40,17 @@ class Products extends React.Component {
         })
     }
     componentDidMount() {
-        this.getData().then((data) => {
-
-            this.setState((state, props) => {
-                return {
-                    products: data.products,
-                    loading: false
-                }
-            });
-        })
+       
+            this.getData().then((data) => {
+                this.setState((state, props) => {
+                    return {
+                        products: data.products,
+                        loading: false,                
+                    }
+                });
+            })    
     }
+
     render() {
         if (this.state.loading) {
             return (<Loader />)
@@ -83,7 +84,6 @@ class Products extends React.Component {
 
                                             </div>
                                         </Col>
-
                                     )
                                 })
                                 }
@@ -106,8 +106,6 @@ class Products extends React.Component {
                 return (<div>Empty products</div>)
             }
         }
-
     }
-
 }
 export default withRouter(Products);

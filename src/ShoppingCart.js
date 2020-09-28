@@ -1,7 +1,6 @@
 import React from 'react';
-import { withRouter, Link, Redirect } from 'react-router-dom';
-import { Container, Row, Col, CardImg } from 'reactstrap';
-import ShowMoreText from 'react-show-more-text';
+import { withRouter, Link } from 'react-router-dom';
+import { Container, Row} from 'reactstrap';
 import cookie from 'react-cookies';
 import Loader from './Loader';
 import OrderList from './ShoppingCart_CheckOutList';
@@ -23,7 +22,7 @@ class ShoppingCart extends React.Component {
                 type: '',
                 text: ''
             },
-            loading: true
+            loading: true,
         }
         this.getCart = this.getCart.bind(this);
         this.apiServerUrl =this.props.urlConfigs.apiServerUrl;      
@@ -132,7 +131,8 @@ class ShoppingCart extends React.Component {
                 cart:cart,
                 cart_total: cart.cart_total,
                 products: cart.productInfo,
-                loading:false            
+                loading:false,
+                       
         })
     }
 
@@ -222,7 +222,7 @@ class ShoppingCart extends React.Component {
                         return {
                             products: [],
                             orderList: data.orders,
-                            loading: false
+                            loading: false,                           
                         }
                     }, () => resolve(data))
                 }).catch(err => {
@@ -231,7 +231,7 @@ class ShoppingCart extends React.Component {
                 })
         })
     }
-    componentDidMount() {
+    componentDidMount() {      
         this.updateCartState();
     }
     render() {
@@ -253,7 +253,7 @@ class ShoppingCart extends React.Component {
                             <div className=""></div>
                             <div className="cart-subtotal">Subtotal: <span className="text-success">${this.state.cart_total}</span></div>
                             <div className="check-out-wraper">
-                                <button className="check-out" onClick={this.checkOut}>check out</button>
+                                <button className="btn btn-primary check-out" onClick={this.checkOut}>check out</button>
                             </div>
                             <div className="cart-products-wrap">
                                 {this.state.products.map((product) => {
@@ -288,16 +288,16 @@ class ShoppingCart extends React.Component {
                                                         })()
                                                     }
                                                     <p>quantity: </p>
-                                                    <button onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}>
+                                                    <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}>
                                                         &mdash;
                                                 </button>
                                                     <input className="updated-quantity" id="quantity" value={product.purchased_quantity} onChange={this.updateValue} />
-                                                    <button onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'increment')}>
+                                                    <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'increment')}>
                                                         &#xff0b;
                                                 </button>
                                                     <div className="delete-update">
-                                                        <button onClick={() => { this.handleDelete(product.id) }}>delete</button>
-                                                        <button type="submit" onClick={() => { this.handleUpdate({ pid: product.id, quantity: product.purchased_quantity }) }}>update</button>
+                                                        <button className="btn btn-primary delete-button" onClick={() => { this.handleDelete(product.id) }}>delete</button>
+                                                        <button className="btn btn-primary" type="submit" onClick={() => { this.handleUpdate({ pid: product.id, quantity: product.purchased_quantity }) }}>update</button>
                                                     </div>
                                                 </div>
                                             </Row>
@@ -310,7 +310,7 @@ class ShoppingCart extends React.Component {
                 )
             }
             else if (typeof this.state.orderList.products !== 'undefined' && this.state.orderList.products.length > 0) {
-                return (<OrderList orders = {this.state.orderList}> </OrderList>)
+                return (<OrderList orders = {this.state.orderList} urlConfigs = {this.props.urlConfigs}> </OrderList>)
             }
             else {
                 return (

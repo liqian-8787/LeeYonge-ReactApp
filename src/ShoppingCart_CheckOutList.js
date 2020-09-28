@@ -1,16 +1,22 @@
 import React from 'react';
-import { withRouter, Link, Redirect } from 'react-router-dom';
-import { Container, Row, Col, CardImg } from 'reactstrap';
+import { withRouter, Link } from 'react-router-dom';
+import { Container, Row } from 'reactstrap';
+import Loader from './Loader';
 
 class OrderList extends React.Component {
 
     constructor(props) {
-        super(props);  
-        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;      
-        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;  
+        super(props);
+        this.state = {
+            urlConfigs: '',
+            loading: true
+        }
+        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;
+        this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
     }
 
-    render() {        
+    render() {
+
         return (
             <Container>
                 <h2>Your order list:</h2>
@@ -58,7 +64,6 @@ class OrderList extends React.Component {
                 }
             </Container>
         )
-
     }
 }
 export default withRouter(OrderList);

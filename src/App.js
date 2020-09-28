@@ -13,6 +13,7 @@ import ProductDetails from './productDetails';
 import ShoppingCart from './ShoppingCart';
 import Dashboard from './Dashboard';
 import Header from './Header';
+import Test from './test';
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -33,7 +34,7 @@ class App extends React.Component {
           <Route exact path="/" render={() => (
             <Home urlConfigs = {this.urlConfigs}/>
           )} />
-          <Route exact path="/products" render={() => (
+          <Route path="/products" render={() => (
             <Products urlConfigs = {this.urlConfigs}/>
           )} />
           <Route path="/signup" render={() => (
@@ -70,13 +71,11 @@ class App extends React.Component {
                 <Dashboard urlConfigs = {this.urlConfigs}/>
               </Row>
             </Grid>
-          )} />
-
+          )} />         
           <Route render={() => (
             <NotFound />
           )} />
         </Switch>
-
       </div>
     );
   }
