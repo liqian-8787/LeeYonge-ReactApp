@@ -4,8 +4,8 @@ import { Link} from 'react-router-dom';
 import cookie from 'react-cookies';
 
 class ViewProfile extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
          firstName:'',
          lastName:'',
@@ -13,7 +13,7 @@ class ViewProfile extends React.Component {
          isLogedIn:false           
         }
         this.getUserInfo = this.getUserInfo.bind(this);
-        this.apiServerUrl = process.env.REACT_APP_API_SEVER_URL;        
+        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;       
     }
 
     getUserInfo() {

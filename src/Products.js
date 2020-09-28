@@ -18,8 +18,8 @@ class Products extends React.Component {
         }
         this.getData = this.getData.bind(this);
         this.loadMore = this.loadMore.bind(this);
-        this.imageResourceUrl = process.env.REACT_APP_IMAGE_URL;
-        this.apiServerUrl = process.env.REACT_APP_API_SEVER_URL;
+        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;
+        this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
     }
 
     loadMore() {

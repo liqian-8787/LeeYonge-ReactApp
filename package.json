@@ -33,20 +33,12 @@
     "react-view": "^2.3.2",
     "reactjs-popup": "^2.0.3",
     "reactstrap": "^8.5.1",
-    "slick-carousel": "^1.8.1",
-    "yarn": "^1.22.10"
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
-   
-    "start-dev": "env-cmd -e dev react-scripts start",
-    "build-dev": "env-cmd -e dev react-scripts build",
-    "start-qa": "env-cmd -e qa react-scripts start",
-    "build-qa": "env-cmd -e qa react-scripts build",
-    "start-prod": "env-cmd -e prod react-scripts start",
-    "build-prod": "env-cmd -e prod react-scripts build",
+    "start": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "ng build --prod",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

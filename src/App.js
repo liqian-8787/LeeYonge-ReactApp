@@ -14,45 +14,60 @@ import ShoppingCart from './ShoppingCart';
 import Dashboard from './Dashboard';
 import Header from './Header';
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+        categories:[]       
+    }
+    this.urlConfigs={
+      imageResourceUrl : "https://assignment2-liqian.herokuapp.com",
+      apiServerUrl : "https://leeyongeapi.herokuapp.com"
+      //apiServerUrl : "http://localhost:8080"
+    }    
+}
   render() { 
     return (
       <div>
         <Header />
         <Switch>
           <Route exact path="/" render={() => (
-            <Home />
+            <Home urlConfigs = {this.urlConfigs}/>
           )} />
           <Route exact path="/products" render={() => (
-            <Products />
+            <Products urlConfigs = {this.urlConfigs}/>
           )} />
           <Route path="/signup" render={() => (
-            <SignUp />
+            <SignUp urlConfigs = {this.urlConfigs}/>
           )} />
 
           <Route path="/logout" render={() => (
-            <Logout />
+            <Logout urlConfigs = {this.urlConfigs}/>
           )} />
           <Route path="/login" render={() => (
-            <LogIn />
+            <LogIn urlConfigs = {this.urlConfigs}/>
           )} />
           <Route path="/viewprofile" render={() => (
 
-            <ViewProfile />
+            <ViewProfile urlConfigs = {this.urlConfigs}/>
 
           )} />
 
           <Route path="/shoppingcart" render={() => (
 
-            <ShoppingCart />
+            <ShoppingCart urlConfigs = {this.urlConfigs}/>
 
           )} />
 
-          <Route path="/product/pid=:id" component={ProductDetails} />
+          <Route path="/product/pid=:id" render={() => (
+
+            <ProductDetails urlConfigs = {this.urlConfigs}/>
+
+          )} />
 
           <Route path="/Dashboard" render={() => (
             <Grid>
               <Row>
-                <Dashboard />
+                <Dashboard urlConfigs = {this.urlConfigs}/>
               </Row>
             </Grid>
           )} />

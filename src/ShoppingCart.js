@@ -26,8 +26,8 @@ class ShoppingCart extends React.Component {
             loading: true
         }
         this.getCart = this.getCart.bind(this);
-        this.imageResourceUrl = process.env.REACT_APP_IMAGE_URL;
-        this.apiServerUrl = process.env.REACT_APP_API_SEVER_URL;
+        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;      
+        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;  
         this.updateQuantity = this.updateQuantity.bind(this);
         this.updateCartState = this.updateCartState.bind(this);
         this.updateValue = this.updateValue.bind(this);

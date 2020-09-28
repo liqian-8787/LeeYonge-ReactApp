@@ -11,8 +11,7 @@ constructor() {
      lastName:'',
      email:'',
      isLogedIn:false           
-    }  
-    this.apiServerUrl = process.env.REACT_APP_API_SEVER_URL;        
+    }
 }
 
 componentDidMount() {

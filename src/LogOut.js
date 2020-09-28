@@ -10,7 +10,7 @@ class LogOut extends React.Component {
             successInfo: ''
         }
         // this.isLogout = this.isLogout.bind(this);
-        this.apiServerUrl = process.env.REACT_APP_API_SEVER_URL;
+        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;     
         this.handleLogOut = this.handleLogOut.bind(this);
     }
 

@@ -19,7 +19,7 @@ class LogIn extends React.Component {
         this.Email = this.Email.bind(this);
         this.Password = this.Password.bind(this);
         this.onLogin = this.onLogin.bind(this);
-        this.apiServerUrl = process.env.REACT_APP_API_SEVER_URL;        
+        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;         
     }
 
     getUserInfo() {

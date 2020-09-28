@@ -18,8 +18,8 @@ class ProductDetails extends React.Component {
         this.getData = this.getData.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.setCartState = this.setCartState.bind(this);
-        this.imageResourceUrl = process.env.REACT_APP_IMAGE_URL;
-        this.apiServerUrl = process.env.REACT_APP_API_SEVER_URL;
+        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;      
+        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;  
     }
 
     getData() {

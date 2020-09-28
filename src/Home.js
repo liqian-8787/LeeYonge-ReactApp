@@ -14,9 +14,10 @@ class Home extends React.Component {
             loading:true,
             userValidator:null,
             promotions:null,
-            bestSellers:null
+            bestSellers:null,
+            urlConfigs:null
         }
-        this.apiServerUrl = process.env.REACT_APP_API_SEVER_URL;
+        this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
         this.getUserInfo = this.validateUser.bind(this);
         this.getPromotion = this.getPromotion.bind(this);
         this.getBestSeller = this.getBestSeller.bind(this);
@@ -76,7 +77,7 @@ class Home extends React.Component {
                 this.getPromotion(),
                 this.getBestSeller()
             ]);
-            this.setState(()=>({loading:false,userValidator,promotions,bestSellers}))
+            this.setState(()=>({loading:false,userValidator,promotions,bestSellers,urlConfigs:this.props.urlConfigs}))
         }catch(err){
             this.setState(()=>({loading:true}))
         }
@@ -87,10 +88,10 @@ class Home extends React.Component {
         } else{
             return (
                 <div>
-                     <WelcomeBanner userInfo = {this.state.userValidator} />
+                     <WelcomeBanner userInfo = {this.state.userValidator}/>
                     <Container>                       
-                        <Promotion promotions = {this.state.promotions}/>
-                        <BestSeller bestSellers = {this.state.bestSellers}/>
+                        <Promotion promotions = {this.state.promotions} urlConfigs={this.state.urlConfigs}/>
+                        <BestSeller bestSellers = {this.state.bestSellers} urlConfigs={this.state.urlConfigs}/>
                     </Container>
                 </div>
             )

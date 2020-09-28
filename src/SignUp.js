@@ -5,9 +5,8 @@ require('dotenv').config({ path: "../config/key.env" });
 
 class Test extends React.Component {
 
-    constructor() {
-        super();
-
+    constructor(props) {
+        super(props);
         this.state = {
             firstName: '',
             lastName: '',
@@ -22,6 +21,8 @@ class Test extends React.Component {
         this.Email = this.Email.bind(this);
         this.Password = this.Password.bind(this);
         this.register = this.register.bind(this);
+        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;      
+        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;  
     }
 
     clearErr = () => {
@@ -60,7 +61,7 @@ class Test extends React.Component {
 
     register(event) {
 
-        fetch('https://leeyongeapi.herokuapp.com/api/users/register', {
+        fetch(`${this.apiServerUrl}/api/users/register`, {
             method: "POST",
             mode: "cors",
             headers: new Headers({
