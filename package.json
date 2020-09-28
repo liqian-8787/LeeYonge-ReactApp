@@ -34,7 +34,7 @@
     "reactjs-popup": "^2.0.3",
     "reactstrap": "^8.5.1",
     "slick-carousel": "^1.8.1",
-    "yarn": "^1.22.5"
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start-dev": "env-cmd -e dev react-scripts start",
