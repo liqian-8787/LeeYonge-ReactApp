@@ -24,8 +24,7 @@ class Promotion extends React.Component {
             return {
                 promotions: this.props.promotions
             }
-        });
-        
+        });        
     }
 
     next() {

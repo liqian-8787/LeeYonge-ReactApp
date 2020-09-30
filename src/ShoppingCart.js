@@ -29,14 +29,15 @@ class ShoppingCart extends React.Component {
         this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;  
         this.updateQuantity = this.updateQuantity.bind(this);
         this.updateCartState = this.updateCartState.bind(this);
-        this.updateValue = this.updateValue.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.checkOut = this.checkOut.bind(this);
+        this.maxDescriptionLength = 150;
     }
 
     updateQuantity = (cart, option) => {
         console.log(cart)
+       
         this.setState(prevState => ({
             products: prevState.products.map(product => product.id == cart.pid ? {
                 ...product,
@@ -50,17 +51,8 @@ class ShoppingCart extends React.Component {
         })
     }
 
-    updateValue = (e) => {
-        this.setState(prevState => ({
-            products: prevState.products.map(product => {
-                product.purchased_quantity = e.getCart.value;
-            })
-        }
-        ))
-    }
     getCart() {
-        let token = cookie.load("token");
-        this.setState(() => ({ loading: true }))
+        let token = cookie.load("token");       
         return new Promise((resolve, reject) => {
             fetch(`${this.apiServerUrl}/api/shoppingcart`, {
                 method: "GET",
@@ -132,7 +124,6 @@ class ShoppingCart extends React.Component {
                 cart_total: cart.cart_total,
                 products: cart.productInfo,
                 loading:false,
-                       
         })
     }
 
@@ -146,7 +137,8 @@ class ShoppingCart extends React.Component {
                         pid: pid,
                         quantity: quantity
                     }]
-                }
+                },
+                loading:true
             })
         }, () => {
             let token = cookie.load("token");
@@ -181,9 +173,10 @@ class ShoppingCart extends React.Component {
                             type: 'update',
                             text: `Shopping cart is updated`
                         },
-                        loading: false
-                    })
-                    this.updateCartState();
+                       
+                    },()=>{
+                        this.updateCartState();
+                    })                    
                 }
                 return response.json()
             })
@@ -267,7 +260,7 @@ class ShoppingCart extends React.Component {
                                                 <div className="col-xs-12 col-md-4">
                                                     <p>Description:</p>
                                                     <Link to={`/product/pid=${product.id}`}>
-                                                        {product.description}
+                                                        {product.description.length>this.maxDescriptionLength?`${product.description.slice(0,this.maxDescriptionLength)}...`:product.description}
                                                     </Link>
                                                 </div>
                                                 <div className="col-xs-12 col-md-4">
@@ -288,16 +281,20 @@ class ShoppingCart extends React.Component {
                                                         })()
                                                     }
                                                     <p>quantity: </p>
-                                                    <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}>
-                                                        &mdash;
-                                                </button>
-                                                    <input className="updated-quantity" id="quantity" value={product.purchased_quantity} onChange={this.updateValue} />
-                                                    <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'increment')}>
-                                                        &#xff0b;
-                                                </button>
-                                                    <div className="delete-update">
-                                                        <button className="btn btn-primary delete-button" onClick={() => { this.handleDelete(product.id) }}>delete</button>
-                                                        <button className="btn btn-primary" type="submit" onClick={() => { this.handleUpdate({ pid: product.id, quantity: product.purchased_quantity }) }}>update</button>
+                                                    <div className="update-panel">
+                                                        <div className="update-input">
+                                                            <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}>
+                                                                &mdash;
+                                                            </button>
+                                                            <input className="updated-quantity" id="quantity"  value={product.purchased_quantity} onChange={(e) => { if(e.target.value)this.handleUpdate({ pid: product.id, quantity: e.target.value}) }} />
+                                                            <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'increment')}>
+                                                                &#xff0b;
+                                                            </button>
+                                                        </div>
+                                                        <div className="delete-update">
+                                                            <button className="btn btn-primary delete-button" onClick={() => { this.handleDelete(product.id) }}>delete</button>
+                                                            <button className="btn btn-primary" type="submit" onClick={() => { this.handleUpdate({ pid: product.id, quantity: product.purchased_quantity }) }}>update</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </Row>

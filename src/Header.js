@@ -1,13 +1,9 @@
 import React from 'react';
 import { withRouter, Link, NavLink as RRNavLink, } from 'react-router-dom';
-import { Container, Row, Col, CardImg, NavLink } from 'reactstrap';
-import Text from 'react-text';
-import { Button } from 'react-bootstrap';
-import { LinkContainer } from "react-router-bootstrap";
+import {  NavLink } from 'reactstrap';
 import { Icon } from '@iconify/react';
-import logo from './amazon logo.png';
-import { Navbar, Nav, NavItem, Grid } from "react-bootstrap";
-import { Switch, Route, useParams } from "react-router-dom";
+import logo from './leeyonge4.png';
+import { Navbar, Nav, NavItem } from "react-bootstrap";
 import shoppingCartOutlined from '@iconify/icons-ant-design/shopping-cart-outlined';
 class Header extends React.Component {
     constructor(props) {
@@ -27,7 +23,7 @@ class Header extends React.Component {
 
                     <Navbar.Brand>
                         <Link to="/">
-                            <img className="nav-logo" src={logo} style={{ width: 100 }} />
+                            <img className="nav-logo" src={logo} />
                         </Link>
                     </Navbar.Brand>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import { withRouter, Link } from 'react-router-dom';
 require('dotenv').config({ path: "../config/key.env" });
@@ -8,10 +8,12 @@ class Test extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
+            user: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+            },
             errorResponses: { code: '', errors: '', errLabel: '' },
             successInfo: ''
         };
@@ -21,59 +23,81 @@ class Test extends React.Component {
         this.Email = this.Email.bind(this);
         this.Password = this.Password.bind(this);
         this.register = this.register.bind(this);
-        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;      
-        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;  
+        this.clearInput = this.clearInput.bind(this);
+        this.clearErrMessage=this.clearErrMessage.bind(this);
+        this.clearSuccMessage=this.clearSuccMessage.bind(this);
+        this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
     }
 
-    clearErr = () => {
+    clearInput() {
         this.setState({
-            errorResponses: { code: '', errors: '', errLabel: '' }
-        });
-    };
-
-    clearSuccess() {
-        this.setState({
+            user: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+            }
+        })
+    }
+    clearErrMessage(){
+        this.setState({         
+            errorResponses: { code: '', errors: '', errLabel: '' }            
+        })
+    }
+    clearSuccMessage(){
+        this.setState({   
             successInfo: ''
-        });
+        })
     }
-
     FirstName(event) {
         this.setState({
-            FirstName: event.target.value,
+            user: {
+                ...this.state.user,
+                firstName: event.target.value,
+            }
         })
     }
     LastName(event) {
         this.setState({
-            LastName: event.target.value,
+            user: {
+                ...this.state.user,
+                lastName: event.target.value,
+            }
         })
     }
     Email(event) {
         this.setState({
-            Email: event.target.value,
+            user: {
+                ...this.state.user,
+                email: event.target.value,
+            }
         })
     }
     Password(event) {
         this.setState({
-            Password: event.target.value,
+            user: {
+                ...this.state.user,
+                password: event.target.value,
+            }
         })
     }
 
-
-    register(event) {
-
-        fetch(`${this.apiServerUrl}/api/users/register`, {
+    register = async (event) => {
+        event.preventDefault();
+        const signUpFormData = {
+            firstName: this.state.user.firstName,
+            lastName: this.state.user.lastName,
+            email: this.state.user.email,
+            password: this.state.user.password,
+        };
+        await fetch(`${this.apiServerUrl}/api/users/register`, {
             method: "POST",
             mode: "cors",
             headers: new Headers({
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }),
-            body: JSON.stringify({
-                firstName: this.state.FirstName,
-                lastName: this.state.LastName,
-                email: this.state.Email,
-                password: this.state.Password,
-            })
+            body: JSON.stringify(signUpFormData)
         })
             .then(response => {
                 if (!response.ok) {
@@ -84,10 +108,14 @@ class Test extends React.Component {
                             }
                         }
                     )
+                    this.clearSuccMessage()
                 } else {
                     this.setState({
-                        successInfo: response.statusText
+                        successInfo: response.statusText,
+
                     })
+                    this.clearInput();
+                    this.clearErrMessage()
                 }
                 return response.json()
             })
@@ -95,8 +123,7 @@ class Test extends React.Component {
                 this.setState({
                     errorResponses: {
                         code: this.state.errorResponses.code,
-                        errors: res.errors[0].errorMessage,
-                        errLabel: res.errors[0].errorLabel
+                        errors: res.errors[0].error,
                     },
                 })
             })
@@ -110,50 +137,46 @@ class Test extends React.Component {
                 <div className="container">
                     <div className="panel">
                         <h2>Create your account</h2><br />
-
-                        <Form action="/signup" method="POST">
-                            {this.state.errorResponses.errLabel ?
+                        {
+                            this.state.successInfo ?
+                                <div><Alert variant="success">
+                                    <p>You have successfully created an account!</p>
+                                    <p>Now you can <Link to="/login" className="alert-link"> Log In </Link> with your account.</p>
+                                </Alert>
+                                </div>
+                                : <div></div>
+                        }
+                        <Form onSubmit={this.register}>
+                            {this.state.errorResponses.code ?
                                 <Alert color="danger">
                                     {this.state.errorResponses.errors}</Alert>
                                 : <div></div>
                             }
                             <FormGroup>
                                 <Label for="exampleName">First Name <span className="star">*</span></Label>
-                                <Input type="text" name="user.firstName" onChange={this.FirstName} placeholder="please enter your first name" required
+                                <Input type="text" name="user.firstName" value={this.state.user.firstName} onChange={this.FirstName} placeholder="please enter your first name" required
                                 />
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleName">Last Name <span className="star">*</span></Label>
-                                <Input type="text" name="user.lastName" onChange={this.LastName} placeholder="please enter your last name" required
+                                <Input type="text" name="user.lastName" value={this.state.user.lastName} onChange={this.LastName} placeholder="please enter your last name" required
                                 />
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleEmail">Email <span className="star">*</span></Label>
-                                <Input type="email" name="user.email" onChange={this.Email} placeholder="please enter a valid email address" required
+                                <Input type="email" name="user.email" value={this.state.user.email} onChange={this.Email} placeholder="please enter a valid email address" required
                                 />
                             </FormGroup>
                             <FormGroup>
                                 <Label for="examplePassword">Password <span className="star">*</span></Label>
-                                <Input type="password" name="user.password" onChange={this.Password} placeholder="password must be minimum 8 charactors"
+                                <Input type="password" name="user.password" value={this.state.user.password} onChange={this.Password} placeholder="password must be minimum 8 charactors"
                                     required />
                             </FormGroup>
-                            <Button variant="primary" type="submit" onClick={() => { this.register(); this.clearErr(); this.clearSuccess() }}>Create</Button>
+                            <Button className="btn btn-primary" type="submit" >Create</Button>
                         </Form>
                         <br /><br />
-                        {
-                            this.state.successInfo ?
-
-                                <div><Alert variant="success">
-
-                                    <p>You have successfully created an account! Now you can Log In with your account</p>
-                                </Alert>
-                                </div>
-                                : <div></div>
-                        }
-
                         <div className="link-to-signup">
                             <p>Already have an account? <Link to="/login" className="alert-link"> Log In </Link></p>
-
                         </div>
                     </div>
                 </div>

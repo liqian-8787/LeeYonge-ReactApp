@@ -13,7 +13,8 @@ import ProductDetails from './productDetails';
 import ShoppingCart from './ShoppingCart';
 import Dashboard from './Dashboard';
 import Header from './Header';
-import Test from './test';
+// https://leeyonge.netlify.app
+
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -23,7 +24,7 @@ class App extends React.Component {
     this.urlConfigs={
       imageResourceUrl : "https://assignment2-liqian.herokuapp.com",
       apiServerUrl : "https://leeyongeapi.herokuapp.com"
-      //apiServerUrl : "http://localhost:8080"
+    //apiServerUrl : "http://localhost:8080"
     }    
 }
   render() { 
