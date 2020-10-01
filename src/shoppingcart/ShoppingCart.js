@@ -312,9 +312,8 @@ class ShoppingCart extends React.Component {
             else {
                 return (
                     <Container>
-                        <h3>
-                            Your Cart is empty, please go check <Link to="/products">all proudcts</Link>
-                        </h3>
+                       <div className="alert-info welcome-banner">Your Cart is empty, please go check <Link to="/products">all proudcts</Link>
+                        </div>
                     </Container>
                 )
             }

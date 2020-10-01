@@ -80,13 +80,14 @@ class Promotion extends React.Component {
                             return (
                                 <div key={product.name}>
                                     <div className="promotion-item">
-                                        <p>{product.name}</p>
+                                        
                                         <div className="promotiom-image-container">
                                             <Link to={`/product/pid=${product.id}`} >
                                                 <CardImg className="product-image" src={`${this.imageResourceUrl}` + product.image_url} />
                                             </Link>
 
                                         </div>
+                                        <p className="title">{product.name}</p>
                                         <div className="price">
                                             <p>Original Price: <span className="origin-price">${product.price}</span></p>
                                             <p>New Price: <span>${product.promotional_price}</span></p>

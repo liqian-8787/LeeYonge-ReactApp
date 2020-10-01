@@ -37,11 +37,9 @@ class Home extends React.Component {
                 }
             })
                 .then(res => {
-                    console.log(res)
                     return res.json()
                 })
                 .then(data => {
-                    console.log(data)
                     resolve(data);
 
                 }).catch(err => {
@@ -56,7 +54,6 @@ class Home extends React.Component {
                 .then(res => res.json())
                 .then(data => {
                     resolve(data);
-
                 }).catch(err => {
                     reject(err);
                 })
@@ -102,7 +99,6 @@ class Home extends React.Component {
                 </div>
             )
         }
-
     }
 }
 

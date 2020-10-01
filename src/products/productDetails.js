@@ -148,7 +148,6 @@ class ProductDetails extends React.Component {
                             <AddErrMessage errorCode={this.state.errorResponses.code} isAdded={this.state.isAdded} > </AddErrMessage>
                             : <div></div>
                     }
-
                     <div className="product-details-container container">
                         <div className="product-detail">
                             <div className="float-lg-left">
@@ -168,7 +167,7 @@ class ProductDetails extends React.Component {
 
                                 <div className="a-dropdown-container">
                                     <Label for="quantity" className="a-native-dropdown">Quantity:&nbsp;</Label>
-                                    <select name="quantity" autoComplete="off" id="quantity" tabIndex="0" className="a-native-dropdown">
+                                    <select name="quantity" autoComplete="off" id="quantity" tabIndex="0" className="a-native-dropdown" content="maximum-scale=1">
                                         <option defaultValue="1" select="true">1</option>
                                         <option value="2" >2</option>
                                         <option value="3" >3</option>

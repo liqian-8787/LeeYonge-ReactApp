@@ -37,14 +37,13 @@ class Test extends React.Component {
                         {this.state.bestSellers.slice(0, this.state.visible).map((item, index) => {
                             const promotionPrice = item.promotional_price;
                             return (
-                                <div className="tile fade-in" key={item.name}>
-                                    
-                                    <p>{item.name}</p>
+                                <div className="tile fade-in" key={item.name}>                                  
                                     <div>
                                         <Link to={`/product/pid=${item.id}`} >                                                    
                                             <CardImg  className="product-image" src={`${this.imageResourceUrl}` + item.image_url}  />
                                         </Link>
                                     </div>
+                                    <p className="title">{item.name}</p>
                                     {promotionPrice ?
                                         <div>
                                             <p>Price: <span className="origin-price">${item.price}</span></p>

@@ -66,23 +66,23 @@ class Products extends React.Component {
 
                                     return (
                                         <Col xs="12" md="6" lg="4" className="product-item" key={product.id}>
-                                            <div className="" >
+                                           
                                                 {
                                                     bestFlag ? <div className="best-flag">Best Seller</div>
                                                         : <div className="nobest"></div>
                                                 }
-                                                <p className="product-name">{product.name}</p>
+                                                
                                                 <div className="image-tile">
                                                     <Link to={`/product/pid=${product.id}`} >
                                                         <CardImg className="product-image" src={`${this.imageResourceUrl}` + product.image_url} />
                                                     </Link>
                                                 </div>
+                                                <p className="title">{product.name}</p>
                                                 <div className="description">
                                                     <Text>{product.description.substr(0, 120)}</Text>
                                                 </div>
                                                 <p className="product-price">Price: <span >${product.price}</span></p>
 
-                                            </div>
                                         </Col>
                                     )
                                 })
