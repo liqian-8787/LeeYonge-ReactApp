@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { Container, Row } from 'reactstrap';
-import Loader from '../global-connector/Loader';
 
 class OrderList extends React.Component {
 
@@ -9,7 +8,6 @@ class OrderList extends React.Component {
         super(props);
         this.state = {
             urlConfigs: '',
-            loading: true
         }
         this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;
         this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
@@ -58,7 +56,8 @@ class OrderList extends React.Component {
                                         </div>
                                     </Row>
                                 </div>
-                            </div></div>
+                            </div>
+                        </div>
                     )
                 })
                 }

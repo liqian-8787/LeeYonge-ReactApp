@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import cookie, { load } from 'react-cookies';
+import cookie from 'react-cookies';
 import Loader from '../global-connector/Loader';
 
 class ViewProfile extends React.Component {
@@ -12,7 +12,7 @@ class ViewProfile extends React.Component {
             lastName: '',
             email: '',
             isLogedIn: false,
-            loading:true
+            loading: true
         }
         this.getUserInfo = this.getUserInfo.bind(this);
         this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
@@ -36,23 +36,19 @@ class ViewProfile extends React.Component {
                         this.setState(
                             {
                                 isLogedIn: false,
-                                loading:false
+                                loading: false
                             }
                         )
                     } else {
                         this.setState({
                             isLogedIn: true,
-                            loading:false
+                            loading: false
                         })
-                        
                     }
-                   
                     return response.json()
-                }) 
-               
+                })
                 .then(data => {
                     resolve(data);
-    
                 })
                 .catch(err => reject(err))
         })
@@ -67,17 +63,16 @@ class ViewProfile extends React.Component {
                     email: data.email
                 }
             });
-            
         })
     }
 
     render() {
-        if(this.state.loading){
+        if (this.state.loading) {
             return (<Loader />)
         }
-        else{
+        else {
             if (this.state.isLogedIn) {
-                return (    
+                return (
                     <Container>
                         <div className="alert-success welcome-banner">
                             <h2>Welcome {this.state.firstName} {this.state.lastName}</h2>
@@ -89,12 +84,12 @@ class ViewProfile extends React.Component {
             else {
                 return (
                     <Container>
-                        <div className="alert-info welcome-banner">Sorry, you have not been loged in. Please <Link to="/login" className="alert-link"><span>sign up </span></Link>
-                      or <Link to="/login" className="alert-link"><span>log in</span></Link></div>
+                        <div className="alert-info welcome-banner">Sorry, you have not been logged in. Please <Link to="/login" className="welcome-link"><span>sign up </span></Link>
+                      or <Link to="/login" className="welcome-link"><span>log in</span></Link></div>
                     </Container>
                 )
-            }    
-        }       
+            }      
+         }
     }
 }
 export default ViewProfile;

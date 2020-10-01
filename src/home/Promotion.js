@@ -42,8 +42,7 @@ class Promotion extends React.Component {
             arrows: true,
             speed: 500,
             slidesToShow: 3,
-            slidesToScroll: 3,
-            
+            slidesToScroll: 3,            
             responsive: [
                 {
                     breakpoint: 999,
@@ -54,7 +53,6 @@ class Promotion extends React.Component {
                         slidesToShow: 2,
                         slidesToScroll: 2,
                         centerPadding: '0'
-
                     }
                 },
                 {
@@ -74,7 +72,6 @@ class Promotion extends React.Component {
             return (
                 <div>
                     <h2>Promotional products</h2>
-
                     <Slider ref={c => (this.slider = c)} {...settings} className="promotion-container">
                         {this.state.promotions.map((product) => {
                             return (
@@ -112,7 +109,6 @@ class Promotion extends React.Component {
         } else {
             return (<div>Empty promotional products</div>)
         }
-
     }
 }
 

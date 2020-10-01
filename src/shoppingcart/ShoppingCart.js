@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { Container, Row} from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 import cookie from 'react-cookies';
 import Loader from '../global-connector/Loader';
 import OrderList from './ShoppingCart_CheckOutList';
@@ -16,17 +16,17 @@ class ShoppingCart extends React.Component {
             orderList: {},
             deletedProduct: '',
             isUpdated: false,
-            errorResponses: { code: '', errors: '' },
             successInfo: '',
             message: {
                 type: '',
                 text: ''
             },
             loading: true,
+            isLoggedIn: false
         }
         this.getCart = this.getCart.bind(this);
-        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;      
-        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;  
+        this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
+        this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;
         this.updateQuantity = this.updateQuantity.bind(this);
         this.updateCartState = this.updateCartState.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
@@ -37,7 +37,7 @@ class ShoppingCart extends React.Component {
 
     updateQuantity = (cart, option) => {
         console.log(cart)
-       
+
         this.setState(prevState => ({
             products: prevState.products.map(product => product.id == cart.pid ? {
                 ...product,
@@ -52,7 +52,7 @@ class ShoppingCart extends React.Component {
     }
 
     getCart() {
-        let token = cookie.load("token");       
+        let token = cookie.load("token");
         return new Promise((resolve, reject) => {
             fetch(`${this.apiServerUrl}/api/shoppingcart`, {
                 method: "GET",
@@ -64,11 +64,20 @@ class ShoppingCart extends React.Component {
                     cookies: JSON.stringify({ token: token }),
                 }
             })
-                .then(res => res.json())
+                .then(res => {
+                    if (!res.errors) {
+                        this.setState({
+                            isLoggedIn: true
+                        })
+                    }
+                    return res.json()
+                })
                 .then(data => {
                     resolve(data);
+                    console.log(data)
                 }).catch(err => {
                     reject(err);
+
                 })
         })
     }
@@ -120,10 +129,10 @@ class ShoppingCart extends React.Component {
     async updateCartState() {
         const [cart] = await Promise.all([this.getCart()])
         this.setState({
-                cart:cart,
-                cart_total: cart.cart_total,
-                products: cart.productInfo,
-                loading:false,
+            cart: cart,
+            cart_total: cart.cart_total,
+            products: cart.productInfo,
+            loading: false,
         })
     }
 
@@ -138,7 +147,7 @@ class ShoppingCart extends React.Component {
                         quantity: quantity
                     }]
                 },
-                loading:true
+                loading: true
             })
         }, () => {
             let token = cookie.load("token");
@@ -158,14 +167,10 @@ class ShoppingCart extends React.Component {
                 if (!response.ok) {
                     this.setState(
                         {
-                            errorResponses: {
-                                code: response.status
-                            },
                             loading: false
                         }
                     )
                 } else {
-
                     this.setState({
                         successInfo: response.statusText,
                         isUpdated: true,
@@ -173,23 +178,19 @@ class ShoppingCart extends React.Component {
                             type: 'update',
                             text: `Shopping cart is updated`
                         },
-                       
-                    },()=>{
+
+                    }, () => {
                         this.updateCartState();
-                    })                    
+                    })
                 }
                 return response.json()
             })
-            .then(res => {
-                this.setState({
-                    errorResponses: {
-                        code: this.state.errorResponses.code,
-                        errors: res.errors[0].errorMessage
-                    },
-                    loading: false
+                .then(res => {
+                    this.setState({
+                        loading: false
+                    })
                 })
-            })
-            .catch(err => console.log(err))
+                .catch(err => console.log(err))
         }
         );
     }
@@ -215,7 +216,7 @@ class ShoppingCart extends React.Component {
                         return {
                             products: [],
                             orderList: data.orders,
-                            loading: false,                           
+                            loading: false,
                         }
                     }, () => resolve(data))
                 }).catch(err => {
@@ -224,12 +225,20 @@ class ShoppingCart extends React.Component {
                 })
         })
     }
-    componentDidMount() {      
+    componentDidMount() {
         this.updateCartState();
     }
     render() {
         if (this.state.loading) {
             return (<Loader />)
+        }
+        else if (this.state.isLoggedIn) {
+            return (
+                <Container>
+                <div className="alert-info welcome-banner">Sorry, you have not been logged in. Please <Link to="/login" className="welcome-link"><span>sign up </span></Link>
+              or <Link to="/login" className="welcome-link"><span>log in</span></Link></div>
+            </Container>
+            )
         } else {
             if (typeof this.state.products !== 'undefined' && this.state.products.length > 0) {
                 return (
@@ -260,7 +269,7 @@ class ShoppingCart extends React.Component {
                                                 <div className="col-xs-12 col-md-4">
                                                     <p>Description:</p>
                                                     <Link to={`/product/pid=${product.id}`}>
-                                                        {product.description.length>this.maxDescriptionLength?`${product.description.slice(0,this.maxDescriptionLength)}...`:product.description}
+                                                        {product.description.length > this.maxDescriptionLength ? `${product.description.slice(0, this.maxDescriptionLength)}...` : product.description}
                                                     </Link>
                                                 </div>
                                                 <div className="col-xs-12 col-md-4">
@@ -286,7 +295,7 @@ class ShoppingCart extends React.Component {
                                                             <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}>
                                                                 &mdash;
                                                             </button>
-                                                            <input className="updated-quantity" id="quantity"  value={product.purchased_quantity} onChange={(e) => { if(e.target.value)this.handleUpdate({ pid: product.id, quantity: e.target.value}) }} />
+                                                            <input className="updated-quantity" id="quantity" value={product.purchased_quantity} onChange={(e) => { if (e.target.value) this.handleUpdate({ pid: product.id, quantity: e.target.value }) }} />
                                                             <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'increment')}>
                                                                 &#xff0b;
                                                             </button>
@@ -307,12 +316,12 @@ class ShoppingCart extends React.Component {
                 )
             }
             else if (typeof this.state.orderList.products !== 'undefined' && this.state.orderList.products.length > 0) {
-                return (<OrderList orders = {this.state.orderList} urlConfigs = {this.props.urlConfigs}> </OrderList>)
+                return (<OrderList orders={this.state.orderList} urlConfigs={this.props.urlConfigs}> </OrderList>)
             }
             else {
                 return (
                     <Container>
-                       <div className="alert-info welcome-banner">Your Cart is empty, please go check <Link to="/products">all proudcts</Link>
+                        <div className="alert-info welcome-banner">Your Cart is empty, please go check <Link to="/products">all proudcts</Link>
                         </div>
                     </Container>
                 )

@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { Grid, Row } from "react-bootstrap";
 import { Switch, Route} from "react-router-dom";
 import NotFound from './errors/NotFound';
 import SignUp from './user/SignUp';
@@ -13,7 +12,7 @@ import ProductDetails from './products/productDetails';
 import ShoppingCart from './shoppingcart/ShoppingCart';
 import Header from './global-connector/Header';
 import Footer from './global-connector/Footer'
-// https://leeyonge.netlify.app
+// netlify website: https://leeyonge.netlify.app
 
 class App extends React.Component {
   constructor(props){

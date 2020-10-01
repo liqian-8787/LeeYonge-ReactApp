@@ -84,7 +84,7 @@ class Home extends React.Component {
             this.setState(() => ({ loading: true }))
         }
     }
-    
+
     render() {
         if (this.state.loading) {
             return (<Loader />)
