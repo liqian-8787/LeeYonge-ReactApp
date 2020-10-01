@@ -51,6 +51,7 @@ class ViewProfile extends React.Component {
     render(){
         if(this.state.isLogedIn){
             return(
+               
                 <Container>
                 <div className="alert-success welcome-banner">
                     
@@ -58,14 +59,17 @@ class ViewProfile extends React.Component {
                     <h3>your email address is: {this.state.email}</h3>
                 </div>
                 </Container>
+               
                 )
         }
         else{
             return(
+                
                 <Container>
                 <div className="alert-success welcome-banner">Sorry, you have not been loged in. Please <Link to="/login" className="alert-link"><span>sign up </span></Link>
                   or <Link to="/login" className="alert-link"><span>log in</span></Link></div>
                   </Container>
+               
             )
         }
         

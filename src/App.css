@@ -12,6 +12,10 @@ body{
 .navbar-nav{
     display: flex;
   }
+
+  .navbar-nav>li:nth-child(1){
+    padding-left:10px
+  }
 .nav{
   background-color:#8F2D56;
 }
@@ -28,7 +32,6 @@ body{
 .nav-logo {
   max-width: 100px;
   width: 100%;
-  margin-top: 8px;
 }
 
 .nav-link{
@@ -306,9 +309,13 @@ select{
 }
 
 .page-wrap {
-  height: inherit;
-  flex-direction: column;
-  background-color: #577590;
+  min-height: 85vh;
+}
+.bg-lightgray{
+  background-color:#FFCAD4;
+}
+.full-body-height{
+  min-height:85vh;
 }
 
 .panel {
@@ -495,7 +502,14 @@ Button {
   animation-delay: 1.2s;
 }
 
-
+.footer{
+  padding:20px;
+  background-color:#8F2D56;
+}
+.footer .legal{
+  color:white;
+  margin-bottom:0
+}
 @media(min-width:639px) {
   
  

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { Container, Row } from 'reactstrap';
-import Loader from './Loader';
+import Loader from '../global-connector/Loader';
 
 class OrderList extends React.Component {
 

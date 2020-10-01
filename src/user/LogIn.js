@@ -107,7 +107,7 @@ class LogIn extends React.Component {
     
     render() {
         return (
-            <div className="page-wrap">
+            <div className="page-wrap bg-lightgray">
                 <div className="container">
                     <div className="panel">
                         <h2>Log in to your account</h2><br />

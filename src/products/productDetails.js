@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import {  Label} from 'reactstrap';
 import ShowMoreText from 'react-show-more-text';
 import cookie from 'react-cookies';
-import AddErrMessage from './AddErrMessage';
-import Loader from './Loader';
+import AddErrMessage from '../errors/AddErrMessage';
+import Loader from '../global-connector/Loader';
 class ProductDetails extends React.Component {
 
     constructor(props) {
@@ -106,7 +106,8 @@ class ProductDetails extends React.Component {
                         {
                             errorResponses: {
                                 code: response.status
-                            }
+                            },
+                            loading: false
                         }
                     )
                 } else {

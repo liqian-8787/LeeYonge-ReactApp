@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter, Link, NavLink as RRNavLink, } from 'react-router-dom';
 import {  NavLink } from 'reactstrap';
 import { Icon } from '@iconify/react';
-import logo from './leeyonge4.png';
+import logo from '../assets/leeyonge-top.png';
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import shoppingCartOutlined from '@iconify/icons-ant-design/shopping-cart-outlined';
 class Header extends React.Component {

@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import Promotion from './Promotion';
 import BestSeller from './BestSeller';
-import WelcomeBanner from './WelcomeBanner'
-import Loader from './Loader';
+import WelcomeBanner from '../global-connector/WelcomeBanner'
+import Loader from '../global-connector/Loader';
 import cookie from 'react-cookies';
 
 class Home extends React.Component {

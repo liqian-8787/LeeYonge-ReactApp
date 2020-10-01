@@ -2,17 +2,17 @@ import React from 'react';
 import './App.css';
 import { Grid, Row } from "react-bootstrap";
 import { Switch, Route} from "react-router-dom";
-import NotFound from './NotFound';
-import SignUp from './SignUp';
-import Products from './Products';
-import Home from './Home';
-import LogIn from './LogIn';
-import ViewProfile from './ViewProfile';
-import Logout from './LogOut';
-import ProductDetails from './productDetails';
-import ShoppingCart from './ShoppingCart';
-import Dashboard from './Dashboard';
-import Header from './Header';
+import NotFound from './errors/NotFound';
+import SignUp from './user/SignUp';
+import Products from './products/Products';
+import Home from './home/Home';
+import LogIn from './user/LogIn';
+import ViewProfile from './user/ViewProfile';
+import Logout from './user/LogOut';
+import ProductDetails from './products/productDetails';
+import ShoppingCart from './shoppingcart/ShoppingCart';
+import Header from './global-connector/Header';
+import Footer from './global-connector/Footer'
 // https://leeyonge.netlify.app
 
 class App extends React.Component {
@@ -31,7 +31,8 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <Switch>
+        <div className="full-body-height">
+          <Switch>
           <Route exact path="/" render={() => (
             <Home urlConfigs = {this.urlConfigs}/>
           )} />
@@ -64,19 +65,14 @@ class App extends React.Component {
 
             <ProductDetails urlConfigs = {this.urlConfigs}/>
 
-          )} />
-
-          <Route path="/Dashboard" render={() => (
-            <Grid>
-              <Row>
-                <Dashboard urlConfigs = {this.urlConfigs}/>
-              </Row>
-            </Grid>
           )} />         
           <Route render={() => (
             <NotFound />
           )} />
         </Switch>
+        </div>
+        <Footer/>
+      
       </div>
     );
   }

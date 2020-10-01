@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { Container, Row} from 'reactstrap';
 import cookie from 'react-cookies';
-import Loader from './Loader';
+import Loader from '../global-connector/Loader';
 import OrderList from './ShoppingCart_CheckOutList';
 
 class ShoppingCart extends React.Component {

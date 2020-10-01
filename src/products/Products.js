@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { Container, Row, Col, CardImg } from 'reactstrap';
 import Text from 'react-text';
 import { Button } from 'react-bootstrap';
-import Loader from './Loader';
+import Loader from '../global-connector/Loader';
 
 class Products extends React.Component {
 

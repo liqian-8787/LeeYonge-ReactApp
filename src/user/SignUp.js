@@ -133,7 +133,7 @@ class Test extends React.Component {
     render() {
 
         return (
-            <div className="page-wrap">
+            <div className="page-wrap bg-lightgray">
                 <div className="container">
                     <div className="panel">
                         <h2>Create your account</h2><br />
