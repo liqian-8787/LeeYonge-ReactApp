@@ -64,12 +64,12 @@ class ShoppingCart extends React.Component {
                     cookies: JSON.stringify({ token: token }),
                 }
             })
-                .then(res => {
-                    if (!res.errors) {
+                .then(res => {                    
+                    if (res.ok) {
                         this.setState({
                             isLoggedIn: true
                         })
-                    }
+                    }    
                     return res.json()
                 })
                 .then(data => {
@@ -231,8 +231,8 @@ class ShoppingCart extends React.Component {
     render() {
         if (this.state.loading) {
             return (<Loader />)
-        }
-        else if (this.state.isLoggedIn) {
+        }      
+        if (!this.state.isLoggedIn) {
             return (
                 <Container>
                 <div className="alert-info welcome-banner">Sorry, you have not been logged in. Please <Link to="/login" className="welcome-link"><span>sign up </span></Link>
