@@ -209,6 +209,7 @@ class ShoppingCart extends React.Component {
             })
                 .then(res => res.json())
                 .then(data => {
+                    console.log(data.orders)
                     this.setState(() => {
                         return {
                             products: [],

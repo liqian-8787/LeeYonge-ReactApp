@@ -38,7 +38,7 @@ class OrderList extends React.Component {
                                         <div className="col-xs-12 col-md-4">
                                             {
                                                 (() => {
-                                                    if (!product.promotion_price) {
+                                                    if (!product.promotional_price) {
                                                         return (
                                                             <p>Sale price: <span className='text-success'>${product.price}</span></p>
                                                         )
@@ -46,7 +46,7 @@ class OrderList extends React.Component {
                                                         return (
                                                             <div>
                                                                 <p>Original price: <span className='origin-price'>${product.price}</span></p>
-                                                                <p>Promotion price: <span className='text-success'>${product.promotion_price}</span></p>
+                                                                <p>Promotion price: <span className='text-success'>${product.promotional_price}</span></p>
                                                             </div>
                                                         )
                                                     }
