@@ -11,7 +11,7 @@ class ViewProfile extends React.Component {
             firstName: '',
             lastName: '',
             email: '',
-            isLogedIn: false,
+            isLoggedIn: false,
             loading: true
         }
         this.getUserInfo = this.getUserInfo.bind(this);
@@ -35,13 +35,13 @@ class ViewProfile extends React.Component {
                     if (!response.ok) {
                         this.setState(
                             {
-                                isLogedIn: false,
+                                isLoggedIn: false,
                                 loading: false
                             }
                         )
                     } else {
                         this.setState({
-                            isLogedIn: true,
+                            isLoggedIn: true,
                             loading: false
                         })
                     }
@@ -71,7 +71,7 @@ class ViewProfile extends React.Component {
             return (<Loader />)
         }
         else {
-            if (this.state.isLogedIn) {
+            if (this.state.isLoggedIn) {
                 return (
                     <Container>
                         <div className="alert-success welcome-banner">

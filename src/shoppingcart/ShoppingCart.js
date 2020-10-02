@@ -62,20 +62,18 @@ class ShoppingCart extends React.Component {
                     cookies: JSON.stringify({ token: token }),
                 }
             })
-                .then(res => {
-                    if (!res.errors) {
+                .then(res => {                  
+                    if (res.ok) {
                         this.setState({
-                            isLoggedIn: true
+                          isLoggedIn: true 
                         })
                     }
-                    console.log(this.state.isLoggedIn)
                     return res.json()
                 })
                 .then(data => {
                     resolve(data);
                 }).catch(err => {
                     reject(err);
-
                 })
         })
     }
@@ -110,7 +108,8 @@ class ShoppingCart extends React.Component {
                                 type: 'delete',
                                 text: `Product ${data.deletedProducts[0].name} is deleted`
                             },
-                            loading: false
+                            loading: false,
+                            isLoggedIn: true
                         }
 
                     })
@@ -131,7 +130,7 @@ class ShoppingCart extends React.Component {
             cart_total: cart.cart_total,
             products: cart.productInfo,
             loading: false,
-        })
+        })        
     }
 
     handleUpdate(product) {
@@ -172,6 +171,7 @@ class ShoppingCart extends React.Component {
                     this.setState({
                         successInfo: response.statusText,
                         isUpdated: true,
+                        isLoggedIn: true,
                         message: {
                             type: 'update',
                             text: `Shopping cart is updated`
@@ -214,6 +214,7 @@ class ShoppingCart extends React.Component {
                             products: [],
                             orderList: data.orders,
                             loading: false,
+                            isLoggedIn: true
                         }
                     }, () => resolve(data))
                 }).catch(err => {
@@ -227,103 +228,203 @@ class ShoppingCart extends React.Component {
     render() {
         if (this.state.loading) {
             return (<Loader />)
-        }
-        if (!this.state.isLoggedIn) {
-            return (
-                <Container>
-                <div className="alert-info welcome-banner">Sorry, you have not been logged in. Please <Link to="/login" className="welcome-link"><span>sign up </span></Link>
-              or <Link to="/login" className="welcome-link"><span>log in</span></Link></div>
-            </Container>
-            )
-        } else {
-            if (typeof this.state.products !== 'undefined' && this.state.products.length > 0) {
-                return (
-                    <div>
-                        {this.state.message.type ?
-                            <Container>
-                                <div className={`${this.state.message.type == "delete" ? 'alert-danger' : "alert-success"} welcome-banner`}>
-                                    {this.state.message.text}
+        }else {
+            if (this.state.isLoggedIn) {
+                if (typeof this.state.products !== 'undefined' && this.state.products.length > 0) {
+                    return (
+                        <div>
+                            {this.state.message.type ?
+                                <Container>
+                                    <div className={`${this.state.message.type == "delete" ? 'alert-danger' : "alert-success"} welcome-banner`}>
+                                        {this.state.message.text}
+                                    </div>
+                                </Container> : <div></div>
+                            }
+                            <Container className="cart-products-container">
+                                <h3>Shopping Cart</h3><br />
+                                <div className=""></div>
+                                <div className="cart-subtotal">Subtotal: <span className="text-success">${this.state.cart_total}</span></div>
+                                <div className="check-out-wraper">
+                                    <button className="btn btn-primary check-out" onClick={this.checkOut}>check out</button>
                                 </div>
-                            </Container> : <div></div>
-                        }
-                        <Container className="cart-products-container">
-                            <h3>Shopping Cart</h3><br />
-                            <div className=""></div>
-                            <div className="cart-subtotal">Subtotal: <span className="text-success">${this.state.cart_total}</span></div>
-                            <div className="check-out-wraper">
-                                <button className="btn btn-primary check-out" onClick={this.checkOut}>check out</button>
-                            </div>
-                            <div className="cart-products-wrap">
-                                {this.state.products.map((product) => {
-                                    return (
-                                        <div key={product.id} className="cart-products">
-                                            <Row>
-                                                <div className="col-xs-12 col-md-4">
-                                                    <h4>{product.name}</h4>
-                                                    <img className="cart-image" src={`${this.imageResourceUrl}` + product.image_url} />
-                                                </div>
-                                                <div className="col-xs-12 col-md-4">
-                                                    <p>Description:</p>
-                                                    <Link to={`/product/pid=${product.id}`}>
-                                                        {product.description.length > this.maxDescriptionLength ? `${product.description.slice(0, this.maxDescriptionLength)}...` : product.description}
-                                                    </Link>
-                                                </div>
-                                                <div className="col-xs-12 col-md-4">
-                                                    {
-                                                        (() => {
-                                                            if (!product.promotion_price) {
-                                                                return (
-                                                                    <p>Sale price: <span className='text-success'>${product.price}</span></p>
-                                                                )
-                                                            } else {
-                                                                return (
-                                                                    <div>
-                                                                        <p>Original price: <span className='origin-price'>${product.price}</span></p>
-                                                                        <p>Promotion price: <span className='text-success'>${product.promotion_price}</span></p>
-                                                                    </div>
-                                                                )
-                                                            }
-                                                        })()
-                                                    }
-                                                    <p>quantity: </p>
-                                                    <div className="update-panel">
-                                                        <div className="update-input">
-                                                            <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}>
-                                                                &mdash;
-                                                            </button>
-                                                            <input className="updated-quantity" id="quantity" value={product.purchased_quantity} onChange={(e) => { if (e.target.value) this.handleUpdate({ pid: product.id, quantity: e.target.value }) }} />
-                                                            <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'increment')}>
-                                                                &#xff0b;
-                                                            </button>
-                                                        </div>
-                                                        <div className="delete-update">
-                                                            <button className="btn btn-primary delete-button" onClick={() => { this.handleDelete(product.id) }}>delete</button>
-                                                            <button className="btn btn-primary" type="submit" onClick={() => { this.handleUpdate({ pid: product.id, quantity: product.purchased_quantity }) }}>update</button>
+                                <div className="cart-products-wrap">
+                                    {this.state.products.map((product) => {
+                                        return (
+                                            <div key={product.id} className="cart-products">
+                                                <Row>
+                                                    <div className="col-xs-12 col-md-4">
+                                                        <h4>{product.name}</h4>
+                                                        <img className="cart-image" src={`${this.imageResourceUrl}` + product.image_url} />
+                                                    </div>
+                                                    <div className="col-xs-12 col-md-4">
+                                                        <p>Description:</p>
+                                                        <Link to={`/product/pid=${product.id}`}>
+                                                            {product.description.length > this.maxDescriptionLength ? `${product.description.slice(0, this.maxDescriptionLength)}...` : product.description}
+                                                        </Link>
+                                                    </div>
+                                                    <div className="col-xs-12 col-md-4">
+                                                        {
+                                                            (() => {
+                                                                if (!product.promotion_price) {
+                                                                    return (
+                                                                        <p>Sale price: <span className='text-success'>${product.price}</span></p>
+                                                                    )
+                                                                } else {
+                                                                    return (
+                                                                        <div>
+                                                                            <p>Original price: <span className='origin-price'>${product.price}</span></p>
+                                                                            <p>Promotion price: <span className='text-success'>${product.promotion_price}</span></p>
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                            })()
+                                                        }
+                                                        <p>quantity: </p>
+                                                        <div className="update-panel">
+                                                            <div className="update-input">
+                                                                <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}>
+                                                                    &mdash;
+                                                                </button>
+                                                                <input className="updated-quantity" id="quantity" value={product.purchased_quantity} onChange={(e) => { if (e.target.value) this.handleUpdate({ pid: product.id, quantity: e.target.value }) }} />
+                                                                <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'increment')}>
+                                                                    &#xff0b;
+                                                                </button>
+                                                            </div>
+                                                            <div className="delete-update">
+                                                                <button className="btn btn-primary delete-button" onClick={() => { this.handleDelete(product.id) }}>delete</button>
+                                                                <button className="btn btn-primary" type="submit" onClick={() => { this.handleUpdate({ pid: product.id, quantity: product.purchased_quantity }) }}>update</button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </Row>
-                                        </div>
-                                    )
-                                })}
+                                                </Row>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </Container>
+                        </div>
+                    )
+                }
+                else if (typeof this.state.orderList.products !== 'undefined' && this.state.orderList.products.length > 0) {
+                    return (<OrderList orders={this.state.orderList} urlConfigs={this.props.urlConfigs}> </OrderList>)
+                }
+                else {
+                    return (
+                        <Container>
+                            <div className="alert-info welcome-banner">Your Cart is empty, please go check <Link to="/products">all proudcts</Link>
                             </div>
                         </Container>
-                    </div>
-                )
-            }
-            else if (typeof this.state.orderList.products !== 'undefined' && this.state.orderList.products.length > 0) {
-                return (<OrderList orders={this.state.orderList} urlConfigs={this.props.urlConfigs}> </OrderList>)
+                    )
+                }
             }
             else {
                 return (
                     <Container>
-                        <div className="alert-info welcome-banner">Your Cart is empty, please go check <Link to="/products">all proudcts</Link>
-                        </div>
+                        <div className="alert-info welcome-banner">Sorry, you have not been logged in. Please <Link to="/login" className="welcome-link"><span>sign up </span></Link>
+                      or <Link to="/login" className="welcome-link"><span>log in</span></Link></div>
                     </Container>
                 )
-            }
-        }
-
-    }
+            }      
+         }
+        
+        
+        
+    //     else if(!this.state.isLoggedIn){
+    //         return (
+    //             <Container>
+    //             <div className="alert-info welcome-banner">Sorry, you have not been logged in. Please <Link to="/login" className="welcome-link"><span>sign up </span></Link>
+    //           or <Link to="/login" className="welcome-link"><span>log in</span></Link></div>
+    //         </Container>
+    //         )
+    //     }          
+    //         else {
+    //             if (typeof this.state.products !== 'undefined' && this.state.products.length > 0) {
+    //                 return (
+    //                     <div>
+    //                         {this.state.message.type ?
+    //                             <Container>
+    //                                 <div className={`${this.state.message.type == "delete" ? 'alert-danger' : "alert-success"} welcome-banner`}>
+    //                                     {this.state.message.text}
+    //                                 </div>
+    //                             </Container> : <div></div>
+    //                         }
+    //                         <Container className="cart-products-container">
+    //                             <h3>Shopping Cart</h3><br />
+    //                             <div className=""></div>
+    //                             <div className="cart-subtotal">Subtotal: <span className="text-success">${this.state.cart_total}</span></div>
+    //                             <div className="check-out-wraper">
+    //                                 <button className="btn btn-primary check-out" onClick={this.checkOut}>check out</button>
+    //                             </div>
+    //                             <div className="cart-products-wrap">
+    //                                 {this.state.products.map((product) => {
+    //                                     return (
+    //                                         <div key={product.id} className="cart-products">
+    //                                             <Row>
+    //                                                 <div className="col-xs-12 col-md-4">
+    //                                                     <h4>{product.name}</h4>
+    //                                                     <img className="cart-image" src={`${this.imageResourceUrl}` + product.image_url} />
+    //                                                 </div>
+    //                                                 <div className="col-xs-12 col-md-4">
+    //                                                     <p>Description:</p>
+    //                                                     <Link to={`/product/pid=${product.id}`}>
+    //                                                         {product.description.length > this.maxDescriptionLength ? `${product.description.slice(0, this.maxDescriptionLength)}...` : product.description}
+    //                                                     </Link>
+    //                                                 </div>
+    //                                                 <div className="col-xs-12 col-md-4">
+    //                                                     {
+    //                                                         (() => {
+    //                                                             if (!product.promotion_price) {
+    //                                                                 return (
+    //                                                                     <p>Sale price: <span className='text-success'>${product.price}</span></p>
+    //                                                                 )
+    //                                                             } else {
+    //                                                                 return (
+    //                                                                     <div>
+    //                                                                         <p>Original price: <span className='origin-price'>${product.price}</span></p>
+    //                                                                         <p>Promotion price: <span className='text-success'>${product.promotion_price}</span></p>
+    //                                                                     </div>
+    //                                                                 )
+    //                                                             }
+    //                                                         })()
+    //                                                     }
+    //                                                     <p>quantity: </p>
+    //                                                     <div className="update-panel">
+    //                                                         <div className="update-input">
+    //                                                             <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}>
+    //                                                                 &mdash;
+    //                                                             </button>
+    //                                                             <input className="updated-quantity" id="quantity" value={product.purchased_quantity} onChange={(e) => { if (e.target.value) this.handleUpdate({ pid: product.id, quantity: e.target.value }) }} />
+    //                                                             <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'increment')}>
+    //                                                                 &#xff0b;
+    //                                                             </button>
+    //                                                         </div>
+    //                                                         <div className="delete-update">
+    //                                                             <button className="btn btn-primary delete-button" onClick={() => { this.handleDelete(product.id) }}>delete</button>
+    //                                                             <button className="btn btn-primary" type="submit" onClick={() => { this.handleUpdate({ pid: product.id, quantity: product.purchased_quantity }) }}>update</button>
+    //                                                         </div>
+    //                                                     </div>
+    //                                                 </div>
+    //                                             </Row>
+    //                                         </div>
+    //                                     )
+    //                                 })}
+    //                             </div>
+    //                         </Container>
+    //                     </div>
+    //                 )
+    //             }
+    //             else if (typeof this.state.orderList.products !== 'undefined' && this.state.orderList.products.length > 0) {
+    //                 return (<OrderList orders={this.state.orderList} urlConfigs={this.props.urlConfigs}> </OrderList>)
+    //             }
+    //             else {
+    //                 return (
+    //                     <Container>
+    //                         <div className="alert-info welcome-banner">Your Cart is empty, please go check <Link to="/products">all proudcts</Link>
+    //                         </div>
+    //                     </Container>
+    //                 )
+    //             }
+    //         }  
+  }
 }
 export default withRouter(ShoppingCart);
