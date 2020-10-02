@@ -36,8 +36,6 @@ class ShoppingCart extends React.Component {
     }
 
     updateQuantity = (cart, option) => {
-        console.log(cart)
-
         this.setState(prevState => ({
             products: prevState.products.map(product => product.id == cart.pid ? {
                 ...product,
@@ -64,17 +62,17 @@ class ShoppingCart extends React.Component {
                     cookies: JSON.stringify({ token: token }),
                 }
             })
-                .then(res => {                    
-                    if (res.ok) {
+                .then(res => {
+                    if (!res.errors) {
                         this.setState({
                             isLoggedIn: true
                         })
-                    }    
+                    }
+                    console.log(this.state.isLoggedIn)
                     return res.json()
                 })
                 .then(data => {
                     resolve(data);
-                    console.log(data)
                 }).catch(err => {
                     reject(err);
 
@@ -211,7 +209,6 @@ class ShoppingCart extends React.Component {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     this.setState(() => {
                         return {
                             products: [],
@@ -220,7 +217,6 @@ class ShoppingCart extends React.Component {
                         }
                     }, () => resolve(data))
                 }).catch(err => {
-                    console.log(err)
                     reject(err);
                 })
         })
@@ -231,7 +227,7 @@ class ShoppingCart extends React.Component {
     render() {
         if (this.state.loading) {
             return (<Loader />)
-        }      
+        }
         if (!this.state.isLoggedIn) {
             return (
                 <Container>
