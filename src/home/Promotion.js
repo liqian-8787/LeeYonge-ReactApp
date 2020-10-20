@@ -36,42 +36,43 @@ class Promotion extends React.Component {
 
     render() {
 
-        const settings = {
-            dots: false,
-            infinite: true,
-            arrows: true,
-            speed: 500,
-            slidesToShow: 3,
-            slidesToScroll: 3,            
-            responsive: [
-                {
-                    breakpoint: 999,
-                    settings: {
-                        arrows: false,
-                        infinite: false,
-                        centerMode: false,
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        centerPadding: '0'
-                    }
-                },
-                {
-                    breakpoint: 639,
-                    settings: {
-                        arrows: false,
-                        infinite: false,
-                        centerMode: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        centerPadding: '0'
-                    }
-                }
-            ]
-        };
+       
         if (this.state.promotions.length > 0) {
+            const settings = {
+                dots: false,
+                infinite: true,
+                arrows: true,
+                speed: 500,
+                slidesToShow:  this.state.promotions.length >= 3?3:2,
+                slidesToScroll: this.state.promotions.length >= 3?3:1,            
+                responsive: [
+                    {
+                        breakpoint: 999,
+                        settings: {
+                            arrows: false,
+                            infinite: true,
+                            centerMode: false,
+                            slidesToShow: this.state.promotions.length >= 3?3:2,
+                            slidesToScroll: this.state.promotions.length >= 3?3:1,
+                            centerPadding: '0'
+                        }
+                    },
+                    {
+                        breakpoint: 639,
+                        settings: {
+                            arrows: false,
+                            infinite: true,
+                            centerMode: false,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            centerPadding: '0'
+                        }
+                    }
+                ]
+            };
             return (
                 <div>
-                    <h2>Promotional products</h2>
+                    <h2>Promotional products</h2>                   
                     <Slider ref={c => (this.slider = c)} {...settings} className="promotion-container">
                         {this.state.promotions.map((product) => {
                             return (

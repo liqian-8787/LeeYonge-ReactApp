@@ -13,13 +13,15 @@ class Products extends React.Component {
             products: [],
             visible: 15,
             error: false,
-            loading: true
+            loading: true,
+            categories: []
 
         }
         this.getData = this.getData.bind(this);
         this.loadMore = this.loadMore.bind(this);
         this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;
         this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
+        this.getCategories = this.getCategories.bind(this);
     }
 
     loadMore() {
@@ -39,16 +41,37 @@ class Products extends React.Component {
                 })
         })
     }
+    getCategories() {
+        return new Promise((resolve, reject) => {
+            fetch(`${this.apiServerUrl}/api/category`)
+                .then(res => res.json())
+                .then(data => {
+                    resolve(data);
+
+                }).catch(err => {
+                    reject(err);
+                })
+        })
+    }
     componentDidMount() {
-       
-            this.getData().then((data) => {
-                this.setState((state, props) => {
-                    return {
-                        products: data.products,
-                        loading: false,                
-                    }
-                });
-            })    
+
+        this.getData().then((data) => {
+            this.setState((state, props) => {
+                return {
+                    products: data.products,
+                    loading: false,
+                }
+            });
+        })
+        this.getCategories().then((data) => {
+            this.setState((state, props) => {
+                console.log(data)
+                return {
+                    categories: data,
+                    loading: false,
+                }
+            });
+        })
     }
 
     render() {
@@ -60,34 +83,50 @@ class Products extends React.Component {
                     <div>
                         <Container className="products-container">
                             <h2>Products List</h2><br />
+                            <div className="category-products-list">
+                            <div className="products-categories">
+                            <ul >
+                                {this.state.categories.map((category) => {
+                                    return (                                       
+                                            <ol value=""><a href="">{category.text}</a></ol>   
+                                    )
+                                })}
+                                  </ul>
+                            </div>
                             <Row className="d-flex flex-wrap">
                                 {this.state.products.slice(0, this.state.visible).map((product) => {
                                     const bestFlag = product.isBestSeller;
-
+                                    const promotionPrice = product.promotional_price;
                                     return (
                                         <Col xs="12" md="6" lg="4" className="product-item" key={product.id}>
-                                           
-                                                {
-                                                    bestFlag ? <div className="best-flag">Best Seller</div>
-                                                        : <div className="nobest"></div>
-                                                }
-                                                
-                                                <div className="image-tile">
-                                                    <Link to={`/product/pid=${product.id}`} >
-                                                        <CardImg className="product-image" src={`${this.imageResourceUrl}` + product.image_url} />
-                                                    </Link>
+                                            {
+                                                bestFlag ? <div className="best-flag">Best Seller</div>
+                                                    : <div className="nobest"></div>
+                                            }
+                                            <div className="image-tile">
+                                                <Link to={`/product/pid=${product.id}`} >
+                                                    <CardImg className="product-image" src={`${this.imageResourceUrl}` + product.image_url} />
+                                                </Link>
+                                            </div>
+                                            <p className="title">{product.name}</p>
+                                            <div className="description">
+                                                <Text>{product.description.substr(0, 120)}</Text>
+                                            </div>
+                                            {promotionPrice ?
+                                                <div>
+                                                    <p>Price: <span className="origin-price">${product.price}</span></p>
+                                                    <p>New Price: <span>${product.promotional_price}</span></p>
                                                 </div>
-                                                <p className="title">{product.name}</p>
-                                                <div className="description">
-                                                    <Text>{product.description.substr(0, 120)}</Text>
-                                                </div>
-                                                <p className="product-price">Price: <span >${product.price}</span></p>
+                                                : <p>Price: <span>${product.price}</span></p>
+                                            }
 
                                         </Col>
                                     )
                                 })
                                 }
                             </Row>
+                           
+                            </div>
                             {
                                 (() => {
                                     if (this.state.visible < this.state.products.length) {

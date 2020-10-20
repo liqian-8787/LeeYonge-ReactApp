@@ -54,8 +54,7 @@ class ViewProfile extends React.Component {
         })
     }
     componentDidMount() {
-        this.getUserInfo().then((data) => {
-            console.log(data);
+        this.getUserInfo().then((data) => {           
             this.setState(() => {
                 return {
                     firstName: data.firstName,

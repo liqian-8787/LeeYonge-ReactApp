@@ -29,7 +29,7 @@ class ProductDetails extends React.Component {
 
     getData() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiServerUrl}/api/product/pid=${this.currentPid}`)
+            fetch(`${this.apiServerUrl}/api/product/pid=${this.currentPid}`)           
                 .then(res => res.json())
                 .then(data => {
                     resolve(data);
@@ -39,29 +39,14 @@ class ProductDetails extends React.Component {
         })
     }
 
-    // setCartState(pid, quantity) {
-    //     this.setState(() => (
-    //         {
-    //             cart: {
-    //                 products: [
-    //                     {
-    //                         pid: pid,
-    //                         quantity: quantity
-    //                     }
-    //                 ]
-    //             }
-    //         }
-    //     ));
-    // }
     isloggedin() {
         return localStorage.getItem("userData") ? true : false;
     }
     componentDidMount() {
-
-        this.getData().then((data) => {
+        this.getData().then((data) => {           
             this.setState(() => {
                 return {
-                    product: data,
+                    product: data[0],
                     isloggedin: this.isloggedin(),
                     loading:false
                 }
@@ -86,7 +71,7 @@ class ProductDetails extends React.Component {
                 loading:true
             })
         }, () => {
-            console.log(this.state.cart)
+           
             let token = cookie.load("token");
             fetch(`${this.apiServerUrl}/api/shoppingcart/add`, {
                 method: "POST",
@@ -152,7 +137,7 @@ class ProductDetails extends React.Component {
                         <div className="product-detail">
                             <div className="float-lg-left">
                                 {this.state.product.image_url ?
-                                    <img className="image-tile" src={this.imageResourceUrl + this.state.product.image_url} /> : <span></span>
+                                    <img className="detail-image" src={this.state.product.image_url} /> : <span></span>
                                 }
                             </div>
                             <form className="float-lg-right" onSubmit={(e) => { this.handleSubmit(e, this.state.product.id) }}>

@@ -1,0 +1,2868 @@
+/*Icons*/
+@font-face {
+    font-family: 'app-icon';
+    src: url(./app-icon.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'app-icon-outline';
+    src: url(./app-icon-outline.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+
+.app-icon,
+.app-icon-o,
+.app-icon-s {
+    font-style: normal;
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+    .app-icon:before {
+        font-family: 'app-icon';
+        /*Baseline alignment to use in text*/
+        position: relative;
+        top: .1em;
+    }
+
+    .app-icon-o:before {
+        font-family: 'app-icon-outline';
+    }
+
+.app-icon-blue {
+    display: inline-block;
+    height: 20px;
+    line-heighT: 20px;
+    width: 20px;
+    color: #fff;
+    background-color: #00549a;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+a:link .app-icon:before,
+a:visited .app-icon:before,
+a:hover .app-icon:before,
+a:focus .app-icon:before a:active .app-icon:before {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.app-icon-bell-chat:before {
+    content: "\e60b";
+}
+
+.app-icon-bell-logo:before {
+    content: "\e600";
+}
+
+.app-icon-bell-logo-aliant:before {
+    content: "\e925";
+}
+
+.app-icon-bell-logo-mts:before {
+    content: "\e928";
+}
+
+.app-icon-cart:before {
+    content: "\e617";
+}
+
+.app-icon-cart-big {
+    font-size: 68px;
+    color: rgb(1,85,155);
+}
+
+
+.app-icon-caret:before {
+    content: "\e61a";
+}
+
+.app-icon-check:before {
+    content: "\e602";
+}
+
+.app-icon-car:before {
+    content: "\e623";
+}
+
+.app-icon-check-light:before {
+    content: "\e603";
+}
+
+.app-icon-chat-bubble:before {
+    content: "\e900";
+}
+
+.app-icon-handset:before {
+    content: "\e901";
+}
+
+.app-icon-cell:before {
+    content: "\e622";
+}
+
+.app-icon-close:before {
+    content: "\e624";
+}
+
+.app-icon-close-solid:before {
+    content: "\e60c";
+}
+
+.app-icon-close-outline:before {
+    content: "\e625";
+}
+
+ .app-icon-blog-en:before {
+    content: "\e904";
+    font-size: 35px !important;
+    top: 55% !important;
+}
+
+.app-icon-blog-fr:before {
+    content: "\e905";
+    font-size: 40px !important;
+    top: 55% !important;
+}
+
+.app-icon-chevron:before,
+.app-icon-chevron-up:before,
+.app-icon-chevron-right:before,
+.app-icon-chevron-down:before,
+.app-icon-chevron-left:before {
+    content: "\e012";
+    display: inline-block;
+}
+
+.app-icon-chevron-up:before {
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transform-origin: 45% 40%;
+    -ms-transform-origin: 45% 40%;
+    transform-origin: 45% 40%;
+}
+
+.app-icon-chevron-down:before {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.app-icon-chevron-left:before {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+
+.app-icon-chevron-bold:before{
+    content: "\e61d";
+}
+
+.app-icon-envelope:before{
+    content: "\e621";
+}
+
+.app-icon-exclamation:before,
+.app-icon-i:before {
+    content: "\e604";
+}
+
+.app-icon-i-solid:before {
+    content: "\e60d";
+}
+
+.app-icon-i-solid-white:before {
+    content: "\e902";
+}
+
+.app-icon-heart:before {
+    content: "\e60e";
+}
+
+.app-icon-home:before {
+    content: "\e61c";
+}
+
+.app-icon-i:before {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.app-icon-location-pin:before {
+    content: "\e620";
+}
+
+.app-icon-magnifying-glass:before {
+    content: "\e615";
+}
+
+
+
+.app-icon-o-247:before {
+    content: "24/7";
+    font-size: 32px !important;
+    font-family: "bell-slim", helvetica, arial, sans-serif;
+    font-weight: 200 !important;
+}
+.app-icon-magnifying-glass-circled {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    border: 2px solid #0066a4;
+    border-radius: 50%;
+    color: #0066a4;
+    width: 40px;
+    height: 40px;
+    padding-top: 4px;
+}
+
+    .app-icon-magnifying-glass-circled:before {
+        content: "\e615";
+        font-size: 20px;
+    }
+
+.app-icon-minus:before {
+    content: "\e606";
+}
+
+.app-icon-mobile-menu:before {
+    content: "\e618";
+}
+
+.app-icon-play-icon:before {
+    content: "\e608";
+}
+
+.app-icon-x:before,
+.app-icon-plus:before {
+    content: "\e007";
+}
+
+.app-icon-x:before {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: inline-block;
+}
+
+.app-icon-select-trigger:before {
+    content: "\e601";
+}
+
+.app-icon-select-trigger-chevrons:before {
+    content: "\e61e";
+}
+
+.app-icon-silhouette:before {
+    content: "\e616";
+}
+
+.app-icon-samsung-logo:before {
+    content: "\e605";
+    display: block;
+    font-size: 120px;
+    margin-top: -40px;
+    margin-bottom: -60px;
+}
+
+.app-icon-silhouette-standing:before {
+    content: "\e607";
+}
+
+.app-icon-check-circled:before {
+    content: "\e609";
+}
+
+.app-icon-exclamation-circled:before {
+    content: "\e60a";
+}
+
+.app-icon-resize:before {
+    content: "\e61f";
+}
+
+.app-icon-star:before {
+    content: "\e60f";
+}
+
+.app-icon-check-circled-outline:before {
+    content: "\e610";
+}
+
+.app-icon-linkedin:before {
+    content: "\e611";
+}
+
+.app-icon-twitter:before {
+    content: "\e612";
+    left: -1px;
+    top: 4px;
+}
+
+.app-icon-youtube:before {
+    content: "\e613";
+}
+
+.app-icon-google-plus:before {
+    content: "\e614";
+}
+
+.app-icon-facebook:before {
+    content: "\e619";
+    left: 3px;
+}
+
+.app-icon-clock:before {
+    content: "\e61b";
+}
+
+.app-icon-pdf:before {
+    content: "\e903";
+}
+
+.icon-subscriber:before {
+    content: "\e908";
+}
+.icon-contract:before {
+    content: "\e907";
+}
+.icon-billing:before {
+    content: "\e906";
+}
+.icon-billing-solid:before {
+    content: "\e909";
+}
+.icon-billing-account:before {
+    content: "\e90a";
+}
+.icon-more-details-pill:before {
+    content: "\e90b";
+}
+.icon-subscriber-outline-circled:before {
+    content: "\e90c";
+}
+.icon-info-outline-circled:before {
+    content: "\e90d";
+}
+.icon-collapse-outline-circled:before {
+    content: "\e90e";
+}
+.icon-exapnd-outline-circled:before {
+    content: "\e90f";
+}
+.app-icon-arrow-up:before {
+    content: "\e923";
+}
+.app-icon-mic:before {
+    content: "\e970";
+}
+/* Some common circle + icon presets */
+.app-toggle-more {
+    display: inline-block;
+    position: relative;
+    font-size: 18px;
+    padding-left: 30px;
+    line-height: 1.3;
+}
+
+    .app-toggle-more:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        border: 1px solid #0066a4;
+        border-radius: 50%;
+        left: 0;
+    }
+
+    .app-toggle-more:after {
+        font-family: 'app-icon';
+        content: '\e007';
+        position: absolute;
+        top: 11px;
+        left: 11px;
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        font-size: 11px;
+        line-height: 1;
+        color: #0066a4;
+    }
+
+.app-more-link {
+    position: relative;
+    padding-right: 25px;
+    display: inline-block;
+}
+
+    .app-more-link:after {
+        font-family: 'app-icon';
+        content: '\e608';
+        padding-left: 5px;
+        margin-top: 2px;
+        position: absolute;
+        line-height: 1;
+    }
+
+    .app-more-link.app-more-link_before {
+        padding-left: 25px;
+    }
+
+        .app-more-link.app-more-link_before:after {
+            left: 0;
+        }
+
+/* icon helper classes */
+.app-icon-circle-xsmall,
+.app-icon-circle-small,
+.app-icon-circle-medium,
+.app-icon-circle-70,
+.app-icon-circle-large,
+.app-icon-circle-110,
+.app-icon-circle-xlarge {
+    display: inline-block;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #00549a;
+    border-radius: 50%;
+    color: #00549a;
+}
+
+    .app-icon-circle-xsmall .app-text,
+    .app-icon-circle-small .app-text,
+    .app-icon-circle-medium .app-text,
+    .app-icon-circle-70 .app-text,
+    .app-icon-circle-large .app-text,
+    .app-icon-circle-110 .app-text,
+    .app-icon-circle-xlarge .app-text {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+
+    .app-icon-circle-xsmall .app-text {
+        line-height: 14px;
+        font-size: 10px;
+    }
+
+    .app-icon-circle-small .app-text {
+        line-height: 36px;
+        font-size: 18px;
+    }
+
+    .app-icon-circle-medium .app-text {
+        line-height: 56px;
+        font-size: 27px;
+    }
+
+    .app-icon-circle-70 .app-text {
+        line-height: 66px;
+        font-size: 30px;
+    }
+
+    .app-icon-circle-large .app-text {
+        line-height: 76px;
+        font-size: 35px;
+    }
+
+    .app-icon-circle-110 .app-text {
+        line-height: 106px;
+        font-size: 45px;
+    }
+
+    .app-icon-circle-xlarge .app-text {
+        line-height: 136px;
+        font-size: 55px;
+    }
+
+    .app-icon-circle-xsmall:before,
+    .app-icon-circle-small:before,
+    .app-icon-circle-medium:before,
+    .app-icon-circle-70:before,
+    .app-icon-circle-large:before,
+    .app-icon-circle-110:before,
+    .app-icon-circle-xlarge:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+    }
+
+.app-icon-circle-xsmall {
+    width: 18px;
+    height: 18px;
+}
+
+.app-icon-circle-small {
+    width: 40px;
+    height: 40px;
+}
+
+.app-icon-circle-medium {
+    width: 60px;
+    height: 60px;
+}
+
+.app-icon-circle-70 {
+    width: 70px;
+    height: 70px;
+}
+
+.app-icon-circle-large {
+    width: 80px;
+    height: 80px;
+}
+
+.app-icon-circle-110 {
+    width: 110px;
+    height: 110px;
+}
+
+.app-icon-circle-xlarge {
+    width: 140px;
+    height: 140px;
+}
+
+.app-icon-xsmall:before,
+.app-icon-circle-xsmall:before {
+    font-size: 10px;
+}
+
+.app-icon-small:before,
+.app-icon-circle-small:before {
+    font-size: 37px;
+}
+
+.app-icon-medium:before,
+.app-icon-circle-medium:before {
+    font-size: 58px;
+}
+
+.app-icon-70:before,
+.app-icon-circle-70:before {
+    font-size: 70px;
+}
+
+.app-icon-large:before,
+.app-icon-circle-large:before {
+    font-size: 78px;
+}
+
+.app-icon-110:before,
+.app-icon-circle-110:before {
+    font-size: 110px;
+}
+
+.app-icon-xlarge:before,
+.app-icon-circle-xlarge:before {
+    font-size: 137px;
+}
+
+.app-icon-circle-xsmall.app-icon-circle_solid,
+.app-icon-circle-small.app-icon-circle_solid,
+.app-icon-circle-70.app-icon-circle_solid,
+.app-icon-circle-large.app-icon-circle_solid,
+.app-icon-circle-110.app-icon-circle_solid,
+.app-icon-circle-xlarge.app-icon-circle_solid {
+    border-color: #00549a;
+    background-color: #00549a;
+}
+
+
+.app-icon-circle-xsmall.app-icon-circle_inverse,
+.app-icon-circle-small.app-icon-circle_inverse,
+.app-icon-circle-medium.app-icon-circle_inverse,
+.app-icon-circle-70.app-icon-circle_inverse,
+.app-icon-circle-large.app-icon-circle_inverse,
+.app-icon-circle-110.app-icon-circle_inverse,
+.app-icon-circle-xlarge.app-icon-circle_inverse {
+    border-color: #fff;
+}
+
+
+
+    .app-icon-circle-xsmall.app-icon-circle_solid:before,
+    .app-icon-circle-small.app-icon-circle_solid:before,
+    .app-icon-circle-medium.app-icon-circle_solid:before,
+    .app-icon-circle-70.app-icon-circle_solid:before,
+    .app-icon-circle-large.app-icon-circle_solid:before,
+    .app-icon-circle-110.app-icon-circle_solid:before,
+    .app-icon-circle-xlarge.app-icon-circle_solid:before,
+    .app-icon-circle-xsmall.app-icon-circle_inverse:before,
+    .app-icon-circle-small.app-icon-circle_inverse:before,
+    .app-icon-circle-medium.app-icon-circle_inverse:before,
+    .app-icon-circle-70.app-icon-circle_inverse:before,
+    .app-icon-circle-large.app-icon-circle_inverse:before,
+    .app-icon-circle-110.app-icon-circle_inverse:before,
+    .app-icon-circle-xlarge.app-icon-circle_inverse:before,
+    .app-icon-circle-xsmall.app-icon-circle_solid,
+    .app-icon-circle-small.app-icon-circle_solid,
+    .app-icon-circle-medium.app-icon-circle_solid,
+    .app-icon-circle-70.app-icon-circle_solid,
+    .app-icon-circle-large.app-icon-circle_solid,
+    .app-icon-circle-110.app-icon-circle_solid,
+    .app-icon-circle-xlarge.app-icon-circle_solid,
+    .app-icon-circle-xsmall.app-icon-circle_inverse,
+    .app-icon-circle-small.app-icon-circle_inverse,
+    .app-icon-circle-medium.app-icon-circle_inverse,
+    .app-icon-circle-70.app-icon-circle_inverse,
+    .app-icon-circle-large.app-icon-circle_inverse,
+    .app-icon-circle-110.app-icon-circle_inverse,
+    .app-icon-circle-xlarge.app-icon-circle_inverse {
+        color: #fff;
+    }
+
+        .app-icon-circle-xsmall.app-icon-circle_solid.app-icon-circle_inverse,
+        .app-icon-circle-small.app-icon-circle_solid.app-icon-circle_inverse,
+        .app-icon-circle-medium.app-icon-circle_solid.app-icon-circle_inverse,
+        .app-icon-circle-70.app-icon-circle_solid.app-icon-circle_inverse,
+        .app-icon-circle-large.app-icon-circle_solid.app-icon-circle_inverse,
+        .app-icon-circle-110.app-icon-circle_solid.app-icon-circle_inverse,
+        .app-icon-circle-xlarge.app-icon-circle_solid.app-icon-circle_inverse {
+            border-color: #fff;
+            background-color: #fff;
+        }
+
+            .app-icon-circle-xsmall.app-icon-circle_solid.app-icon-circle_inverse:before,
+            .app-icon-circle-small.app-icon-circle_solid.app-icon-circle_inverse:before,
+            .app-icon-circle-medium.app-icon-circle_solid.app-icon-circle_inverse:before,
+            .app-icon-circle-70.app-icon-circle_solid.app-icon-circle_inverse:before,
+            .app-icon-circle-large.app-icon-circle_solid.app-icon-circle_inverse:before,
+            .app-icon-circle-110.app-icon-circle_solid.app-icon-circle_inverse:before,
+            .app-icon-circle-xlarge.app-icon-circle_solid.app-icon-circle_inverse:before {
+                color: #00549a;
+            }
+
+
+.app-icon-circle-small .app-icon-circle-txt {
+    font-size: 24px;
+    width: 37px;
+    text-align: center;
+    display: inline-block;
+    line-height: 1.5;
+}
+
+[class*="app-icon-arrow-"] {
+    transition: -webkit-transform .5s cubic-bezier(.55, 0, .1, 1);
+    transition: transform .5s cubic-bezier(.55, 0, .1, 1);
+}
+
+.app-icon-size-small {
+    font-size: 20px !important;
+}
+
+.app-icon-size-medium {
+    font-size: 40px !important;
+}
+
+.app-icon-size-110 {
+    font-size: 50px !important;
+}
+
+.app-icon-size-large {
+    font-size: 60px !important;
+}
+
+.app-icons-group {
+    white-space: nowrap;
+}
+
+    .app-icons-group > .app-icon-o:not(:first-child) {
+        margin-left: -20px;
+    }
+
+.app-icon-location-pin-outline:before {
+    content: "\e924";
+}
+
+@media (max-width: 519px) {
+    .app-icon-circle-large:before {
+        font-size: 52px;
+    }
+}
+
+
+
+
+/* circled colors */
+.app-icon-circle_white {
+    border-color: #fff;
+    color: #fff;
+}
+
+.app-icon-choose-file:before {
+    content: "\e927";
+}
+
+
+/* Outline style icons */
+.app-icon-o-battery:before {
+    content: "\e600";
+}
+
+.app-icon-o-camera:before {
+    content: "\e601";
+}
+
+.app-icon-o-camera-shutter:before {
+    content: "\e602";
+}
+
+.app-icon-o-cellphone:before {
+    content: "\e603";
+}
+
+.app-icon-o-chat-bubble:before {
+    content: "\e604";
+}
+
+.app-icon-o-clock:before {
+    content: "\e606";
+}
+
+.app-icon-o-crescent:before {
+    content: "\e605";
+}
+
+.app-icon-o-cycle:before {
+    content: "\e607";
+}
+
+.app-icon-o-data-0:before {
+    content: "\e608";
+}
+
+.app-icon-o-data-1:before {
+    content: "\e609";
+}
+
+.app-icon-o-data-2:before {
+    content: "\e60a";
+}
+
+.app-icon-o-data-3:before {
+    content: "\e60b";
+}
+
+.app-icon-o-data-4:before {
+    content: "\e60c";
+}
+
+.app-icon-o-envelope:before {
+    content: "\e60d";
+}
+
+.app-icon-o-fibe:before {
+    content: "\e634";
+}
+
+.app-icon-o-gear:before {
+    content: "\e60e";
+}
+
+.app-icon-o-globe:before {
+    content: "\e60f";
+}
+
+.app-icon-o-handset:before {
+    content: "\e610";
+}
+
+.app-icon-o-headphones:before {
+    content: "\e611";
+}
+
+.app-icon-o-homephone:before {
+    content: "\e612";
+}
+
+.app-icon-o-house:before {
+    content: "\e635";
+}
+
+.app-icon-o-houses:before {
+    content: "\e808";
+}
+
+.app-icon-o-id:before {
+    content: "\e613";
+}
+
+.app-icon-o-id-alt:before {
+    content: "\e935";
+}
+
+.app-icon-o-infinity:before {
+    content: "\e614";
+}
+
+.app-icon-o-laptop:before {
+    content: "\e615";
+}
+
+.app-icon-o-lightning-bolt:before {
+    content: "\e616";
+}
+
+.app-icon-o-location:before {
+    content: "\e617";
+}
+
+.app-icon-o-paper-plane:before {
+    content: "\e618";
+}
+
+.app-icon-o-play-icon:before {
+    content: "\e619";
+}
+
+.app-icon-o-receiver:before {
+    content: "\e61a";
+}
+
+.app-icon-o-shield:before {
+    content: "\e61b";
+}
+
+.app-icon-o-silhouette:before {
+    content: "\e61c";
+}
+
+.app-icon-o-silhouette-id:before {
+    content: "\e61d";
+}
+
+.app-icon-o-speed-0:before {
+    content: "\e61e";
+}
+
+.app-icon-o-speed-1:before {
+    content: "\e61f";
+}
+
+.app-icon-o-speed-2:before {
+    content: "\e620";
+}
+
+.app-icon-o-speed-3:before {
+    content: "\e621";
+}
+
+.app-icon-o-speed-4:before {
+    content: "\e622";
+}
+
+.app-icon-o-speed-6:before {
+    content: "\e622";
+}
+
+.app-icon-o-tower:before {
+    content: "\e623";
+}
+
+.app-icon-o-tv:before {
+    content: "\e624";
+}
+
+.app-icon-o-up-arrow:before,
+.app-icon-o-down-arrow:before {
+    content: "\e625";
+}
+
+.app-icon-o-down-arrow:before {
+    display: inline-block;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.app-icon-o-globe-half:before {
+    content: "\e626";
+}
+
+.app-icon-o-globe-three-quarters:before {
+    content: "\e627";
+}
+
+.app-icon-o-play-few-times-a-week:before {
+    content: "\e628";
+}
+
+.app-icon-o-play-everyday:before {
+    content: "\e629";
+}
+
+.app-icon-o-download-rarely:before {
+    content: "\e62A";
+}
+
+.app-icon-o-download-few-times-a-week:before {
+    content: "\e62B";
+}
+
+.app-icon-o-download-almost-everyday:before {
+    content: "\e62C";
+}
+
+.app-icon-o-email:before {
+    content: "\e62D";
+}
+
+.app-icon-o-music-rarely:before {
+    content: "\e62E";
+}
+
+.app-icon-o-music-few-times-a-week:before {
+    content: "\e62F";
+}
+
+.app-icon-o-music-almost-every-day:before {
+    content: "\e630";
+}
+
+.app-icon-o-silhouette-standing:before {
+    content: "\e631";
+}
+
+.app-icon-o-most-popular:before {
+    content: "\e632";
+}
+
+.app-icon-o-movies:before {
+    content: "\e633";
+}
+
+.app-icon-o-phone-plus:before {
+    content: "\e636";
+}
+
+.app-icon-o-phone-in-hand:before {
+    content: "\e637";
+}
+
+.app-icon-o-tablet:before {
+    content: "\e638";
+}
+
+.app-icon-o-speed-5:before {
+    content: "\e639";
+}
+
+.app-icon-o-bars:before {
+    content: "\e63a";
+}
+
+.app-icon-o-tag:before {
+    content: "\e63b";
+}
+
+.app-icon-o-star:before {
+    content: "\e63c";
+}
+
+.app-icon-o-24:before {
+    content: "\e63d";
+}
+.app-icon-o-arbor:before {
+    content: "\e63e";
+}
+.app-icon-o-battcharge:before {
+    content: "\e63f";
+}
+
+.app-icon-o-bluetooth:before {
+    content: "\e640";
+}
+
+.app-icon-o-bytablet:before,
+.app-icon-o-bring-yotablet:before {
+    content: "\e641";
+}
+.app-icon-o-browsesupp:before {
+    content: "\e642";
+}
+.app-icon-o-calendar:before {
+    content: "\e643";
+}
+.app-icon-o-canada:before {
+    content: "\e644";
+}
+
+.app-icon-o-hands-free:before,
+.app-icon-o-handsfree:before {
+    content: "\e645";
+}
+
+.app-icon-o-memorycard:before {
+    content: "\e646";
+}
+.app-icon-o-questions-about-bell-mail:before {
+    content: "\e647";
+}
+
+.app-icon-o-sheet:before,
+.app-icon-o-screenprotector:before {
+    content: "\e648";
+}
+.app-icon-o-smart-acc:before {
+    content: "\e649";
+}
+
+.app-icon-o-browsesupp:before,
+.app-icon-o-changemyrateplan:before {
+    content: "\e64a";
+}
+.app-icon-o-forgotpassword:before {
+    content: "\e64b";
+}
+.app-icon-o-power_symbol:before {
+    content: "\e64c";
+}
+.app-icon-o-glossary:before {
+    content: "\e64d";
+}
+.app-icon-o-hdtv:before {
+    content: "\e64e";
+}
+.app-icon-o-headphone:before {
+    content: "\e64f";
+}
+
+.app-icon-o-heart:before {
+    content: "\e650";
+}
+.app-icon-o-hintsandtips:before {
+    content: "\e651";
+}
+.app-icon-o-notifyme-limit:before {
+    content: "\e652";
+}
+.app-icon-o-netflix:before {
+    content: "\e936";
+}
+.app-icon-o-4k-hdtv:before {
+    content: "\e937";
+}
+.app-icon-o-changeYourfab5-10:before {
+    content: "\e653";
+}
+.app-icon-o-changeyourprogramming:before {
+    content: "\e654";
+}
+.app-icon-o-checkmycurrentbalance:before {
+    content: "\e655";
+}
+.app-icon-o-chooiceof4packages:before {
+    content: "\e656";
+}
+.app-icon-o-cloud:before {
+    content: "\e657";
+}
+.app-icon-o-compareprogramming:before {
+    content: "\e658";
+}
+.app-icon-o-consoldateyourbills:before {
+    content: "\e659";
+}
+
+.app-icon-o-create_mail_account:before {
+    content: "\e65a";
+}
+.app-icon-o-currentinternetusage:before {
+    content: "\e65b";
+}
+.app-icon-o-diagnoseandfixpcproblems:before {
+    content: "\e65c";
+}
+.app-icon-o-download:before {
+    content: "\e65d";
+}
+.app-icon-o-upload:before {
+    content: "\e65d";
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    display:inline-block
+}
+.app-icon-o-ebill:before {
+    content: "\e65e";
+}
+.app-icon-o-edit:before {
+    content: "\e65f";
+}
+.app-icon-o-estimateusage:before {
+    content: "\e660";
+}
+.app-icon-o-expandcircle:before {
+    content: "\e661";
+}
+.app-icon-o-expandx:before {
+    content: "\e662";
+}
+.app-icon-o-fiberoptics:before {
+    content: "\e663";
+}
+.app-icon-o-find_channel:before {
+    content: "\e664";
+}
+.app-icon-o-find_areacode:before {
+    content: "\e665";
+}
+
+
+
+.app-icon-o-forgot_username:before {
+    content: "\e666";
+}
+
+.app-icon-o-accessibility_rate_plans:before {
+    content: "\e944";
+}
+
+.app-icon-o-forgot_youpasscode:before {
+    content: "\e667";
+}
+.app-icon-o-forward_yourcalls:before {
+    content: "\e668";
+}
+.app-icon-o-french:before {
+    content: "\e669";
+}
+.app-icon-o-international:before {
+    content: "\e66a";
+}
+.app-icon-o-internetplans:before {
+    content: "\e66b";
+}
+.app-icon-o-internet:before {
+    content: "\e66c";
+}
+.app-icon-o-keyboard:before {
+    content: "\e66d";
+}
+.app-icon-o-leaf:before {
+    content: "\e66e";
+}
+.app-icon-o-learnmore_mail:before {
+    content: "\e66f";
+}
+.app-icon-o-learnmore_mcAfee:before {
+    content: "\e670";
+}
+.app-icon-o-manufacturer_warranty:before {
+    content: "\e671";
+}
+.app-icon-o-mic:before {
+    content: "\e673";
+}
+.app-icon-o-mobiletv:before {
+    content: "\e674";
+}
+.app-icon-o-move_satellite:before {
+    content: "\e675";
+}
+.app-icon-o-moving:before {
+    content: "\e676";
+}
+.app-icon-o-on_demand:before {
+    content: "\e677";
+}
+.app-icon-o-os:before {
+    content: "\e678";
+}
+.app-icon-o-receiver2:before {
+    content: "\e679";
+}
+.app-icon-o-www:before {
+    content: "\e67a";
+}
+.app-icon-o-longdistance_ratecharts:before {
+    content: "\e67b";
+}
+.app-icon-o-mac:before {
+    content: "\e67c";
+}
+.app-icon-o-overthephone:before {
+    content: "\e67d";
+}
+.app-icon-o-paperbill:before {
+    content: "\e67e";
+}
+.app-icon-o-phonenumber:before {
+    content: "\e67f";
+}
+.app-icon-o-processor:before {
+    content: "\e680";
+}
+.app-icon-o-recordapvrshow:before {
+    content: "\e681";
+}
+.app-icon-o-repairs-installs-troubleshooting:before {
+    content: "\e682";
+}
+.app-icon-o-temporarysuspend:before {
+    content: "\e683";
+}
+.app-icon-o-usage:before {
+    content: "\e684";
+}
+.app-icon-o-userguilde:before {
+    content: "\e685";
+}
+.app-icon-o-usinginternet:before {
+    content: "\e686";
+}
+.app-icon-o-voice:before {
+    content: "\e687";
+}
+.app-icon-o-watchshowsonline:before {
+    content: "\e688";
+}
+.app-icon-o-wifi:before {
+    content: "\e689";
+}
+.app-icon-o-windows:before {
+    content: "\e68a";
+}
+.app-icon-o-wirecare:before {
+    content: "\e68b";
+}
+.app-icon-o-wirelessconnection:before {
+    content: "\e68c";
+}
+.app-icon-o-displaysize:before {
+    content: "\e68d";
+}
+.app-icon-o-picture:before {
+    content: "\e68e";
+}
+.app-icon-o-play:before {
+    content: "\e68f";
+}
+.app-icon-o-screensize:before {
+    content: "\e690";
+}
+.app-icon-o-secure_internet_connection:before {
+    content: "\e691";
+}
+.app-icon-o-signintobellmail:before {
+    content: "\e692";
+}
+.app-icon-o-smarttips:before {
+    content: "\e693";
+}
+
+.app-icon-o-smart_touch,
+.app-icon-o-smarttouch:before {
+    content: "\e694";
+}
+.app-icon-o-smartphonecare:before {
+    content: "\e695";
+}
+.app-icon-o-softwareupdate:before {
+    content: "\e696";
+}
+.app-icon-o-software:before {
+    content: "\e697";
+}
+.app-icon-o-sports:before {
+    content: "\e698";
+}
+.app-icon-o-temporarysuspendservice:before {
+    content: "\e699";
+}
+.app-icon-o-travellingcanada:before {
+    content: "\e69a";
+}
+.app-icon-o-travellingcoverage:before {
+    content: "\e69b";
+}
+.app-icon-o-tutorial:before {
+    content: "\e69c";
+}
+.app-icon-o-tvpackages:before {
+    content: "\e69d";
+}
+.app-icon-o-upgradeoradd:before {
+    content: "\e69e";
+}
+.app-icon-o-plus:before {
+    content: "\e69e";
+}
+.app-icon-o-USflag:before {
+    content: "\e69f";
+}
+.app-icon-o-dollarsign_dblcircle:before {
+    content: "\e6a0";
+}
+.app-icon-o-family_contact_card:before {
+    content: "\e6a1";
+}
+.app-icon-o-family_contact_card-aliant:before {
+    content: "\e99c";
+}
+.app-icon-o-calling_card:before {
+    content: "\e6a2";
+}
+.app-icon-o-calling_card-aliant:before {
+    content: "\e992";
+}
+.app-icon-o-mcafee:before {
+    content: "\e6a3";
+}
+.app-icon-o-indent_a_call:before {
+    content: "\e6a4";
+}
+.app-icon-o-visual_call_waiting:before {
+    content: "\e6a5";
+}
+.app-icon-o-threeway_calling:before {
+    content: "\e6a6";
+}
+.app-icon-o-resource_centre:before {
+    content: "\e6a7";
+}
+.app-icon-o-lte_world_fastest:before {
+    content: "\e6a8";
+}
+.app-icon-o-data-5:before {
+    content: "\e6a9";
+}
+.app-icon-o-data-6:before {
+    content: "\e700";
+}
+.app-icon-o-speed-4:before {
+    content: "\e701";
+}
+.app-icon-o-speed-5:before {
+    content: "\e702";
+}
+.app-icon-o-speed-5:before {
+    content: "\e701";
+}
+.app-icon-o-speed-6:before {
+    content: "\e702";
+}
+.app-icon-o-speed-giga:before {
+    content: "\e672";
+}
+.app-icon-o-touch_changeplans:before {
+    content: "\e703";
+}
+.app-icon-o-4kvideo:before {
+    content: "\e6aa";
+}
+.app-icon-o-access_content:before {
+    content: "\e6ab";
+}
+.app-icon-o-mobilepay_resistant:before {
+    content: "\e6ac";
+}
+.app-icon-o-silentmode:before {
+    content: "\e6ad";
+}
+.app-icon-o-speakers:before {
+    content: "\e6ae";
+}
+.app-icon-o-notifications:before {
+    content: "\e6af";
+}
+.app-icon-o-stylus:before {
+    content: "\e6b0";
+}
+.app-icon-o-touch_id:before {
+    content: "\e6b1";
+}
+.app-icon-o-water_dust_resistant:before {
+    content: "\e6b2";
+}
+.app-icon-o-home_easyaccess:before {
+    content: "\e6b3";
+}
+.app-icon-o-multitasking:before {
+    content: "\e6b4";
+}
+.app-icon-o-position_recognition:before {
+    content: "\e6b5";
+}
+.app-icon-o-physical_size:before {
+    content: "\e6b6";
+}
+.app-icon-o-qwerty_keyboard:before {
+    content: "\e6b7";
+}
+.app-icon-o-privacy_security:before {
+    content: "\e6b8";
+}
+.app-icon-o-connected_devices:before {
+    content: "\e6b9";
+}
+.app-icon-o-ptt_dedicated:before {
+    content: "\e6ba";
+}
+.app-icon-o-rugged_design:before {
+    content: "\e6bb";
+}
+.app-icon-o-aircommands:before {
+    content: "\e6bc";
+}
+.app-icon-o-flip_phone:before {
+    content: "\e6bf";
+}
+.app-icon-o-ptt_compatible:before {
+    content: "\e6c0";
+}
+.app-icon-o-ilw_safety:before {
+    content: "\e6bd";
+}
+.app-icon-o-military_grade:before {
+    content: "\e6d4";
+}
+.app-icon-o-intrinsically_safe:before {
+    content: "\e6d5";
+}
+.app-icon-o-turbo_stick:before {
+    content: "\e6c1";
+}
+.app-icon-o-hdmi:before {
+    content: "\e6d7";
+}
+.app-icon-o-contacts:before {
+    content: "\e6d8";
+}
+.app-icon-o-messages:before {
+    content: "\e6d9";
+}
+.app-icon-o-temperature:before {
+    content: "\e6c9";
+}
+.app-icon-o-humidity_resistant:before {
+    content: "\e6db";
+}
+.app-icon-o-vibration_resistant:before {
+    content: "\e6dc";
+}
+.app-icon-o-plugging_landline_phone:before {
+    content: "\e6dd";
+}
+.app-icon-o-wireless_charging:before {
+    content: "\e6de";
+}
+.app-icon-o-ms_office:before {
+    content: "\e6df";
+}
+.app-icon-o-retina_display:before {
+    content: "\e6e0";
+}
+.app-icon-o-all_new_design:before {
+    content: "\e6e1";
+}
+.app-icon-o-m8motion_coprocessor:before {
+    content: "\e6e2";
+}
+.app-icon-o-isight_camera:before {
+    content: "\e6e3";
+}
+.app-icon-o-facetime:before {
+    content: "\e6e4";
+}
+.app-icon-o-22hrs_batterylife:before {
+    content: "\e6e5";
+}
+.app-icon-o-htc_blinkfeed:before {
+    content: "\e6ea";
+}
+.app-icon-o-dual_speaker:before {
+    content: "\e6eb";
+}
+.app-icon-o-knock_code:before {
+    content: "\e6ec";
+}
+
+.app-icon-o-smart_notice:before {
+    content: "\e6f3";
+}
+.app-icon-o-optical_stabilization:before {
+    content: "\e6be";
+}
+.app-icon-o-selective_focus:before {
+    content: "\e6ca";
+}
+.app-icon-o-gorilla_glass:before {
+    content: "\e6c2";
+}
+.app-icon-o-25h_talktime:before {
+    content: "\e710";
+}
+.app-icon-o-48h_power:before {
+    content: "\e711";
+}
+.app-icon-o-1_3megapixel_camera:before {
+    content: "\e712";
+}
+.app-icon-o-2tb_memory:before {
+    content: "\e713";
+}
+.app-icon-o-8megapixel_camera:before {
+    content: "\e714";
+}
+.app-icon-o-mcafee_good:before {
+    content: "\e715";
+}
+.app-icon-o-mcafee_better:before {
+    content: "\e716";
+}
+.app-icon-o-mcafee_best:before {
+    content: "\e717";
+}
+.app-icon-o-video_game01:before {
+    content: "\e718";
+}
+.app-icon-o-video_game02:before {
+    content: "\e719";
+}
+.app-icon-o-datacalc_dataapp:before {
+    content: "\e93c";
+}
+.app-icon-o-video_game03:before {
+    content: "\e71a";
+}
+.app-icon-o-all_metalbody:before {
+    content: "\e6c3";
+}
+.app-icon-o-fast_charging:before {
+    content: "\e6c4";
+}
+.app-icon-o-21h_talktime:before {
+    content: "\e6c5";
+}
+.app-icon-o-stamina_mode:before {
+    content: "\e6c7";
+}
+.app-icon-o-tomorrow_tech:before {
+    content: "\e800";
+}
+.app-icon-o-24cc:before {
+    content: "\e801";
+}
+.app-icon-o-sport-baseball:before {
+    content: "\e802";
+}
+.app-icon-o-movie-ticket:before {
+    content: "\e803";
+}
+.app-icon-o-tv-preview:before {
+    content: "\e804";
+}
+.app-icon-o-fibe-restart:before {
+    content: "\e805";
+}
+.app-icon-o-fibe-on-demand:before {
+    content: "\e806";
+}
+.app-icon-o-whats-on:before {
+    content: "\e807";
+}
+
+.app-icon-o-fibetv:before {
+    content: "\e809";
+}
+.app-icon-o-kids:before {
+    content: "\e80a";
+}
+.app-icon-o-search:before {
+    content: "\e80b";
+}
+.app-icon-o-smart-acc2:before {
+    content: "\e80c";
+}
+.app-icon-o-recordings:before {
+    content: "\e80d";
+}
+.app-icon-o-military_grade:before {
+    content: "\e900";
+}
+.app-icon-o-screen-choice:before {
+    content: "\e901";
+}
+.app-icon-o-ptt_compatible:before {
+    content: "\e902";
+}
+.app-icon-o-aircommands:before {
+    content: "\e903";
+}
+.app-icon-o-water_dust_resistant:before {
+    content: "\e904";
+}
+.app-icon-o-glove-wetfingers:before {
+    content: "\e905";
+}
+.app-icon-o-vibration_resistant:before {
+    content: "\e906";
+}
+.app-icon-o-quick-setup:before {
+    content: "\e907";
+}
+.app-icon-o-colour-display:before {
+    content: "\e908";
+}
+.app-icon-o-high-humidity:before {
+    content: "\e909";
+}
+.app-icon-o-user-plus:before {
+    content: "\e90a";
+}
+.app-icon-o-5mp-camera:before {
+    content: "\e90b";
+}
+.app-icon-o-24h-battery:before {
+    content: "\e90c";
+}
+.app-icon-o-8mp-isight:before {
+    content: "\e90d";
+}
+.app-icon-specifications.app-icon-o-8mp-isight:before{
+    top: 70%;
+    left: 70%;
+}
+.app-icon-o-21mp-camera:before {
+    content: "\e90e";
+}
+.app-icon-o-close-outline-lite:before {
+    content: "\e90f";
+}
+.app-icon-o-exclamation-circle:before {
+    content: "\e910";
+}
+.app-icon-o-battery-charge-h:before {
+    content: "\e911";
+}
+.app-icon-o-memory-card2:before {
+    content: "\e912";
+}
+.app-icon-o-cloud-backup:before {
+    content: "\e913";
+}
+.app-icon-o-message-center:before {
+    content: "\e914";
+}
+.app-icon-o-voice-to-text:before {
+    content: "\e915";
+}
+.app-icon-o-anti-spam:before {
+    content: "\e916";
+}
+.app-icon-o-unlimited:before {
+    content: "\e917";
+}
+.app-icon-o-mobilietv-addon:before {
+    content: "\e918";
+}
+.app-icon-o-voicemail:before {
+    content: "\e919";
+}
+.app-icon-o-shield-reliable:before {
+    content: "\e91a";
+}
+.app-icon-o-alarm:before {
+    content: "\e91b";
+}
+.app-icon-o-whole-home-pvr:before {
+    content: "\e91c";
+}
+.app-icon-o-operating-system:before {
+    content: "\e91d";
+}
+.app-icon-o-fastest:before {
+    content: "\e91e";
+}
+.app-icon-o-never:before {
+    content: "\e91f";
+}
+.app-icon-o-arrow-up:before {
+    content: "\e920";
+}
+.app-icon-o-facetime-hd:before {
+    content: "\e921";
+}
+.app-icon-specifications.app-icon-o-facetime-hd:before {
+    top: 60%;
+}
+.app-icon-o-eye:before {
+    content: "\e922";
+}
+.app-icon-o-wheelchair:before {
+    content: "\e925";
+}
+.app-icon-o-mms:before {
+    content: "\e974";
+    font-size: 38px !important;
+}
+.app-icon-o-hearing:before {
+    content: "\e923";
+}
+.app-icon-o-puzzle-piece:before {
+    content: "\e924";
+}
+.app-icon-o-call-management:before {
+    content: "\e92e";
+}
+.app-icon-o-exclamation-circle-alt:before {
+    content: "\e926";
+}
+.app-icon-o-screen-reader:before {
+    content: "\e92a";
+}
+.app-icon-o-cc:before {
+    content: "\e92d";
+}
+.app-icon-o-hearing-aid:before {
+    content: "\e929";
+}
+.app-icon-o-phone-lock:before {
+    content: "\e928";
+}
+.app-icon-o-contact-list:before {
+    content: "\e92c";
+}
+.app-icon-o-alert:before {
+    content: "\e927";
+}
+.app-icon-o-checklist:before {
+    content: "\e92b";
+}
+.app-icon-o-restart:before {
+    content: "\e92f";
+}
+.app-icon-o-pvr:before {
+    content: "\e930";
+}
+.app-icon-o-move-tv:before {
+    content: "\e931";
+}
+.app-icon-o-home-wifi:before {
+    content: "\e932";
+}
+.app-icon-o-sound-quality:before {
+    content: "\e933";
+}
+.app-icon-o-fibe-speed:before {
+    content: "\e934";
+}
+.app-icon-o-add-phone:before {
+    content: "\e938";
+}
+.app-icon-o-business:before {
+    content: "\e939";
+}
+.app-icon-o-upgrade:before {
+    content: "\e93a";
+}
+.app-icon-o-wearable-watch:before {
+    content: "\e93b";
+}
+.app-icon-o-phone-dollar:before {
+    content: "\e93d";
+}
+.app-icon-o-blue-star:before {
+    content: "\e93e";
+}
+.app-icon-o-ipad-iphone:before {
+    content: "\e93f";
+}
+.app-icon-o-phone-bars:before {
+    content: "\e940";
+}
+.app-icon-o-simple-printer:before {
+    content: "\e941";
+}
+.app-icon-o-phone-star:before {
+    content: "\e942";
+}
+.app-icon-o-harddrive-button:before {
+    content: "\e943";
+}
+.app-icon-o-access_plans:before {
+    content: "\e945";
+}
+.app-icon-o-shopping-bag:before {
+    content: "\e95b";
+}
+.app-icon-o-three-screens:before{
+    content: "\e9ab";
+}
+.icon-subscriber:before {
+    content: "\e908";
+}
+.icon-contract:before {
+    content: "\e907";
+}
+.icon-billing:before {
+    content: "\e906";
+}
+.icon-billing-solid:before {
+    content: "\e909";
+}
+.icon-billing-account:before {
+    content: "\e90a";
+}
+.icon-more-details-pill:before {
+    content: "\e90b";
+}
+.icon-subscriber-outline-circled:before {
+    content: "\e90c";
+}
+.icon-info-outline-circled:before {
+    content: "\e90d";
+}
+.icon-collapse-outline-circled:before {
+    content: "\e90e";
+}
+.icon-exapnd-outline-circled:before {
+    content: "\e90f";
+}
+.icon-date-setting:before {
+    content: "\e910";
+}
+.icon-pending-transaction:before {
+    content: "\e911";
+}
+.icon-billing-outline:before {
+    content: "\e912";
+}
+.icon-checkmark-circled:before {
+    content: "\e913";
+}
+.icon-contract-outline:before {
+    content: "\e914";
+}
+.icon-printer-ouline:before {
+    content: "\e915";
+}
+.icon-settings-solid:before {
+    content: "\e916";
+}
+.icon-group-subscriber:before {
+    content: "\e917";
+}
+.icon-filter:before {
+    content: "\e918";
+}
+.icon-search:before {
+    content: "\e919";
+}
+.icon-sort:before {
+    content: "\e91a";
+}
+.icon-print:before {
+    content: "\e91b";
+}
+.icon-download:before {
+    content: "\e91c";
+}
+.icon-sort-desc:before {
+    content: "\e91d";
+}
+.icon-sort-asc:before {
+    content: "\e91e";
+}
+.icon-copyright:before {
+    content: "\e91f";
+}
+.icon-csv:before {
+    content: "\e920";
+}
+.icon-no-reciever:before {
+    content: "\e921";
+}
+.icon-live-tv:before {
+    content: "\e922";
+}
+
+/* May 11 2016 - Eugene Trounev [it-s]*/
+.app-icon-o-allof4packages:before {
+    content: "\e6c8";
+}
+
+.app-icon-o-number1:before {
+    content: "\e6cb";
+}
+
+.app-icon-o-icon-trophy:before {
+    content: "\e946";
+}
+
+.app-icon-o-icon-icon_program:before {
+    content: "\e947";
+}
+
+.app-icon-o-icon-icon_family:before {
+    content: "\e948";
+}
+
+.app-icon-o-icon-icon_cheering_to_the_top:before {
+    content: "\e949";
+}
+
+
+.app-icon-o-icon-icon_PPT_fr:before {
+    content: "\e956";
+}
+
+.app-icon-o-icon-icon_PPT_en:before {
+    content: "\e957";
+}
+
+.app-icon-o-icon-icon_FAQ:before {
+    content: "\e955";
+}
+.app-icon-o-icon_Auto_multi-sport_tracking:before {
+    content: "\e958";
+}
+.app-icon-o-icon_Advanced_fitness_tracking:before {
+    content: "\e959";
+}
+.app-icon-o-newsat:before {
+    content: "\e95a";
+}
+.app-icon-o-shopping-bag:before {
+    content: "\e95b";
+}
+
+.app-icon-o-premium-plus:before {
+    content: "\e95c";
+}
+
+.app-icon-o-Built_in_battery_for_extra_power:before {
+    content: "\e95d";
+}
+
+.app-icon-o-Moto_Mods_snap_on_design:before {
+    content: "\e95e";
+}
+
+.app-icon-o-Projects_up_to_70_on_any_flat_surface:before {
+    content: "\e95f";
+}
+
+.app-icon-o-Ultra_thin_and_portable:before {
+    content: "\e960";
+}
+
+.app-icon-o-4k-plusHD:before {
+    content: "\e961";
+}
+
+.app-icon-o-4k-remote:before {
+    content: "\e968";
+}
+
+.app-icon-o-4k-timeshift:before {
+    content: "\e96a";
+}
+
+.app-icon-o-15:before {
+    content: "\e96b";
+}
+
+.app-icon-o-receiver-4k:before {
+    content: "\e96c";
+}
+
+.app-icon-o-receiver-pvr:before {
+    content: "\e96d";
+}
+
+.app-icon-o-no-receiver-pvr:before {
+    content: "\e9e2";
+}
+
+.app-icon-o-recording:before {
+    content: "\e96e";
+}
+
+.app-icon-o-TV:before {
+    content: "\e96f";
+}
+
+.app-icon-o-TV-4k:before {
+    content: "\e970";
+}
+
+.app-icon-o-TV-HD:before {
+    content: "\e971";
+}
+
+.app-icon-o-4k-plusHD:before {
+    content: "\e972";
+}
+
+.app-icon-o-4k-remote-white:before {
+    content: "\e973";
+}
+
+.app-icon-o-Sleek_size:before {
+    content: "\e991";
+}
+
+.app-icon-o-Extra_power:before {
+    content: "\e976";
+}
+
+.app-icon-o-Efficiency_Mode:before {
+    content: "\e977";
+}
+.app-icon-o-included-in-box:before {
+  content: "\e978";
+}
+
+.app-icon-o-10_hours_of_battery_life:before {
+  content: "\e979";
+}
+
+.app-icon-o-Built_in_kickstand:before {
+  content: "\e97a";
+}
+
+.app-icon-o-built_in_speakerphone_for_calls:before {
+  content: "\e97b";
+}
+
+.app-icon-o-Moto_Mods_snap_on_design:before {
+  content: "\e97c";
+}
+
+.app-icon-o-4k-remote-white2:before {
+  content: "\e97d";
+}
+
+.app-icon-o-receiver-4k-updated:before {
+  content: "\e97e";
+}
+
+.app-icon-o-mobile_email_setup-1:before {
+  content: "\e97f";
+}
+
+.app-icon-o-TV-4k-updated:before {
+  content: "\e980";
+}
+
+.app-icon-o-TV-HD_updated:before {
+  content: "\e981";
+}
+
+.app-icon-o-receiver-pvr_updated:before {
+  content: "\e982";
+}
+.app-icon-o-theme-pack:before {
+    content: "\e975";
+}
+
+.app-icon-o-VR:before {
+  content: "\e91f";
+}
+
+.app-icon-o-tech_appointment:before {
+  content: "\e983";
+}
+
+.app-icon-o-apps:before {
+  content: "\e984";
+}
+
+.app-icon-o_record:before {
+  content: "\e985";
+}
+
+.app-icon-o_popcorn:before {
+  content: "\e986";
+}
+
+.app-icon-o-antivirus:before {
+  content: "\e987";
+}
+
+.app-icon-o-autoupdates:before {
+  content: "\e988";
+}
+
+.app-icon-o-firewall:before {
+  content: "\e989";
+}
+
+.app-icon-o-parental-control:before {
+  content: "\e98a";
+}
+
+.app-icon-o-fraud-protection:before {
+  content: "\e98b";
+}
+
+.app-icon-o-data-protection:before {
+  content: "\e98c";
+}
+
+.app-icon-o-home-hub-1000:before {
+  content: "\e98d";
+}
+
+.app-icon-o-home-hub-2000:before {
+  content: "\e98f";
+}
+
+.app-icon-o-home-hub-3000:before {
+  content: "\e98e";
+}
+
+.app-icon-o-never:before {
+  content: "\e990";
+}
+
+.app-icon-o-Icon_Call-Control:before {
+  content: "\e993";
+}
+
+.app-icon-o-Icon_Call_Answer_Message_Manager:before {
+  content: "\e994";
+}
+
+.app-icon-o-Icon_Call_block:before {
+  content: "\e995";
+}
+
+.app-icon-o-Icon_Call_Forwarding:before {
+  content: "\e996";
+}
+
+.app-icon-o-Icon_Call_Privacy:before {
+  content: "\e997";
+}
+
+.app-icon-o-Icon_Call_Screen_v2:before {
+  content: "\e998";
+}
+
+.app-icon-o-Icon_Call_Trace:before {
+  content: "\e999";
+}
+
+.app-icon-o-Icon_Call_Waiting:before {
+  content: "\e99a";
+}
+
+.app-icon-o-Icon_Last_Call_Return-Call_Return:before {
+  content: "\e99b";
+}
+
+.app-icon-o-Icon_Talkmail_Plus-Voice_Dialing:before {
+  content: "\e99d";
+}
+
+.app-icon-o-Icon_Temporary_suspend_your_Service:before {
+  content: "\e99e";
+}
+
+.app-icon-o-Icon_Voicemail:before {
+  content: "\e99f";
+}
+
+.app-icon-o-Icon_Voicemail_plus:before {
+  content: "\e9a0";
+}
+
+.app-icon-o-bellMTS:before {
+  content: "\e9a1";
+}
+
+.app-icon-o-checkmark_ribbon:before {
+  content: "\e9a2";
+}
+
+.app-icon-o-speed-5-100mbps:before {
+  content: "\e9a3";
+}
+
+.app-icon-o-speed-7-300mbps:before {
+  content: "\e9a4";
+}
+
+.app-icon-o-speed-8-gigabit:before {
+  content: "\e9a5";
+}
+
+
+.app-icon-o-picture-quality-TV:before {
+  content: "\e9a6";
+}
+
+.app-icon-o-onDemand-update:before {
+  content: "\e9a7";
+}
+
+.app-icon-o-tablet-player:before {
+  content: "\e9a8";
+}
+
+.app-icon-o-clock:before {
+  content: "\e9a9";
+}
+
+.app-icon-o-step1:before {
+  content: "\e9aa";
+}
+
+.app-icon-tv-packages:before {
+  content: "\e9ac";
+}
+
+.app-icon-personalized-programming:before {
+  content: "\e9ad";
+}
+
+.app-icon-on-demand:before {
+  content: "\e9ae";
+}
+
+.app-icon-no-contract:before {
+  content: "\e9af";
+}
+
+.app-icon_press_reader:before {
+  content: "\e9b0";
+}
+
+.app-icon-o-press_reader:before {
+  content: "\e9b0";
+}
+
+
+.app-icon-o-fibe-tv-app-updated:before {
+  content: "\e9b1";
+}
+
+
+.app-icon-o-personalized-programming-updated:before {
+  content: "\e9b2";
+}
+
+.app-icon-o-tv-packages-updated:before {
+  content: "\e9b3";
+}
+
+.app-icon-o-24-hours:before {
+  content: "\e9b4";
+}
+
+.app-icon-o-gaming:before {
+  content: "\e9b5";
+}
+
+.app-icon-o-3D-image-scanning:before {
+  content: "\e9b6";
+}
+
+
+.app-icon-o-wifi-01:before {
+  content: "\e9b7";
+}
+
+.app-icon-o-fuel-01:before {
+  content: "\e9b8";
+}
+
+.app-icon-o-geofencing-01:before {
+  content: "\e9b9";
+}
+
+.app-icon-o-triptracking-01:before {
+  content: "\e9ba";
+}
+
+.app-icon-o-engine-01:before {
+  content: "\e9bb";
+}
+
+.app-icon-o-driver-notifications-01:before {
+  content: "\e9bc";
+}
+
+.app-icon-o-do-not-disturb-01:before {
+  content: "\e9bd";
+}
+
+.app-icon-o-location-01:before {
+  content: "\e9be";
+}
+
+
+.app-icon-o-check-mark:before {
+  content: "\e9bf";
+}
+
+.app-icon-o-wall-to-wall-coverage:before {
+  content: "\e9c0";
+}
+
+.app-icon-o-smart-network:before {
+  content: "\e9c1";
+}
+
+.app-icon-o-tri-band:before {
+  content: "\e9c2";
+}
+
+.app-icon-o-mesh-network:before {
+  content: "\e9c3";
+}
+
+.app-icon-o-battery1:before {
+  content: "\e9c4";
+}
+
+
+.app-icon-o-family-friendly-controls:before {
+  content: "\e9c5";
+}
+
+
+.app-icon-o-channel-hopping:before {
+  content: "\e9c6";
+}
+
+.app-icon-o-bonus-alt:before {
+    content: "\e9c7";
+}
+
+.app-icon-o-wholesale:before {
+    content: "\e9c8";
+}
+
+.app-icon-o-services:before {
+    content: "\e9c9";
+}
+
+.app-icon-o-manufacturing:before {
+    content: "\e9ca";
+}
+
+.app-icon-o-hospitality:before {
+    content: "\e9cb";
+}
+
+.app-icon-o-cart-thin:before {
+    content: "\e9cc";
+}
+
+.app-icon-o-transportation-thick:before {
+    content: "\e9cd";
+}
+
+.app-icon-o-hospitality-update:before {
+    content: "\e9ce";
+}
+
+.app-icon-o-financial-thick:before {
+    content: "\e9cf";
+}
+
+.app-icon-o-construction-thick:before {
+    content: "\e9d0";
+}
+
+.app-icon-o-symmetrical-speeds:before {
+    content: "\e9d1";
+}
+
+.app-icon-o-multiple-devices:before {
+    content: "\e9d2";
+}
+
+.app-icon-o-future-proof:before {
+    content: "\e9d3";
+}
+
+.app-icon-o-Fastest-response-times:before {
+    content: "\e9d4";
+}
+
+.app-icon-o-Wearables:before {
+    content: "\e9d5";
+}
+
+.app-icon-o-Lifestyle:before {
+    content: "\e9d6";
+}
+
+.app-icon-o-Connected-Things:before {
+    content: "\e9d7";
+}
+
+.app-icon-o-Trackers:before {
+    content: "\e9d8";
+}
+
+.app-icon-o-Smart-Home:before {
+    content: "\e9d9";
+}
+
+.app-icon-o-ultra-plus:before {
+    content: "\e9da";
+}
+
+.app-icon-o-smartphone:before {
+    content: "\e9db";
+}
+
+.app-icon-o-ultra-plus-updated:before {
+    content: "\e9dc";
+}
+
+.app-icon-o-CraveTV:before {
+    content: "\e9dd";
+}
+
+.app-icon-o-returns:before {
+    content: "\e9de";
+}
+
+.app-icon-o-free-shipping:before {
+    content: "\e9df";
+}
+
+.app-icon-o-fast-delivery:before {
+    content: "\e9e0";
+}
+
+.app-icon-o-Leading-TV:before {
+    content: "\e9e1";
+}
+
+.app-icon-o-promo-no-contract:before {
+    content: "\e9e3";
+}
+
+.app-icon-o-bell-one-app:before {
+    content: "\e9e4";
+}
+
+.app-icon-o-download-speed-fibe150:before {
+    content: "\e9e6";
+}
+
+.app-icon-o-download-speed-fibe300:before {
+    content: "\e9e5";
+}
+
+.app-icon-o-download-speed-gigabit:before {
+    content: "\e9e7";
+}
+
+.app-icon-o-icon_one-app:before {
+    content: "\e9e8";
+}
+
+.app-icon-o-icon-apple:before {
+    content: "\e9e9";
+}
+
+
+.app-icon-o-icon-Wearables-smartwatch-IOT:before {
+    content: "\e9ea";
+}
+
+.app-icon-o-icon-tracker-IOT:before {
+    content: "\e9eb";
+}
+
+
+.app-icon-o-icon-Connected-Things-IOT:before {
+    content: "\e9ec";
+}
+
+.app-icon-o-icon-Smart-Home-IOT:before {
+    content: "\e9ed";
+}
+
+
+.app-icon-o-icon-smartcar-IOT:before {
+    content: "\e9ee";
+}
+
+.app-icon-o-icon-security-cam-IOT:before {
+    content: "\e9ef";
+}
+
+.app-icon-o-icon-smart-network-v2:before {
+    content: "\e9f0";
+}
+
+.app-icon-o-icon-largest-network:before {
+    content: "\e9f1";
+}
+.app-icon-o-arrow-upload_large:before {
+    content: "\e9f2";
+}
+
+.app-icon-o-pay-less-upfront:before {
+    content: "\e9f3";
+}
+
+.app-icon-o-mobile-call-waiting:before {
+    content: "\e9f4";
+}
+
+.app-icon-o-mobile-call-forwarding:before {
+    content: "\e9f5";
+}
+
+
+.app-icon-o-smart-home-1:before {
+    content: "\e9fc";
+}
+
+.app-icon-o-shop-orders:before {
+    content: "\e9fb";
+}
+
+.app-icon-o-concern:before {
+    content: "\e9fa";
+}
+
+
+.app-icon-o-business-01:before {
+    content: "\e9f9";
+}
+
+.app-icon-o-bundles:before {
+    content: "\e9f8";
+}
+
+
+.app-icon-o-appointments:before {
+    content: "\e9f7";
+}
+
+.app-icon-o-account-billing:before {
+    content: "\e9f6";
+}
+
+.app-icon-o-wifi-pods:before {
+    content: "\e9fd";
+}
+
+.app-icon-o-trash:before {
+    content: "\e9fe";
+}
+
+.app-icon-o-water-resistant-heavy:before {
+  content: "\e9ff";
+}
+
+.app-icon-o-triptracking_02:before {
+  content: "\ea00";
+}
+
+.app-icon-o-resource_centre_02:before {
+  content: "\ea01";
+}
+
+.app-icon-o-triptracking_02_updated:before {
+  content: "\ea02";
+}
+.app-icon-o-resource_centre_02_updated:before {
+  content: "\ea03";
+}
+.app-icon-o-app2_fr:before {
+  content: "\ea04";
+}
+.app-icon-o-app2_en:before {
+  content: "\ea05";
+}
+
+.app-icon-o-receiver-addition:before {
+    content: "\ea06";
+}
+
+
+
+.app-icon-o-tablet2:before {
+    content: "\ea0e";
+}
+
+
+.app-icon-o-smartwatches:before {
+    content: "\ea0d";
+}
+
+.app-icon-o-tablet2-big:before {
+    content: "\ea0c";
+}
+
+
+.app-icon-o-securitycam:before {
+    content: "\ea0b";
+}
+
+.app-icon-o-connected-car:before {
+    content: "\ea0a";
+}
+
+
+.app-icon-o-SmartWatch-thin:before {
+    content: "\ea09";
+}
+
+
+.app-icon-o-mobile2:before {
+    content: "\ea08";
+}
+
+
+.app-icon-o-tracker:before {
+    content: "\ea07";
+}
+
+.app-icon-o-touchpad:before {
+    content: "\ea0f";
+}
+
+
+
+.app-icon-o-best-app:before {
+    content: "\ea10";
+}
+
+.app-icon-o-alaarte:before {
+    content: "\ea11";
+}
+
+.app-icon-o-icon-billing:before {
+    content: "\ea12";
+}
+.app-icon-o-ecg:before {
+    content: "\ea13";
+}
+
+.app-icon-o-automation:before {
+    content: "\ea14";
+}
+
+.app-icon-o-wifi-pod-cov:before {
+    content: "\ea19";
+}
+
+.app-icon-o-computer:before {
+  content: "\ea15";
+}
+
+.app-icon-o-multiple-device:before {
+  content: "\ea16";
+}
+
+.app-icon-o-tv-streaming:before {
+  content: "\ea17";
+}
+
+.app-icon-o-gaming-devices:before {
+  content: "\ea18";
+}
+
+.app-icon-o-smart-home_devices:before {
+  content: "\ea1a";
+}
+
+.app-icon-o-peak-activity:before {
+  content: "\ea1b";
+}
+
+.app-icon-o-older-devices:before {
+  content: "\ea1c";
+}
+
+.app-icon-o-other-electronics:before {
+  content: "\ea1d";
+}
+
+.app-icon-o-high-density_living_areas:before {
+  content: "\ea1e";
+}
+
+.app-icon-o-download-speed1:before {
+  content: "\ea1f";
+}
+
+.app-icon-o-upload-speed2:before {
+  content: "\ea20";
+}
+
+.app-icon-o-latency2:before {
+  content: "\ea21";
+}
+
+.app-icon-o-server-location:before {
+  content: "\ea22";
+}
+
+.app-icon-o-internet-browser:before {
+  content: "\ea23";
+}
+
+.app-icon-o-limit-activity:before {
+  content: "\ea24";
+}
+
+.app-icon-o-lpm-icon:before {
+  content: "\ea25";
+}
+
+.app-icon-o-bulkemail:before {
+    content: "\ea26";
+  }
+  
+.app-icon-o-modem-3000:before {
+    content: "\ea27";
+}
+
+.app-icon-o-globe-1:before {
+  content: "\ea28";
+}
+
+.app-icon-o-foldable-design:before {
+  content: "\ea29";
+}
+
+.app-icon-o-device-selection:before {
+  content: "\ea30";
+}
+.app-icon-o-100GB:before {
+    content: "\ea2a";
+  }
+  
+.app-icon-o-350GB:before {
+    content: "\ea2b";
+}
+
+.app-icon-o-Download_speed2b:before {
+  content: "\ea2c";
+}
+
+.app-icon-o-unlimited:before {
+  content: "\ea2d";
+}
+
+.app-icon-o-Upload_arrow:before {
+  content: "\ea2e";
+}
+
+.app-icon-o-modem-2:before {
+  content: "\ea2f";
+}
+
+.app-icon-o-Pay-Bill:before {
+  content: "\ea31";
+}
+
+.app-icon-o-stores:before {
+  content: "\ea32";
+}
+.app-icon-o-rocket:before {
+  content: "\ea33";
+}
+
+.app-icon-o-5G:before {
+  content: "\ea34";
+}
+
+.app-icon-o-crave-tv-small:before {
+  content: "\ea35";
+}
+
+.app-icon-o-devices2:before {
+  content: "\ea36";
+}
+
+.app-icon-o-BellTV2:before {
+  content: "\ea37";
+}
+
+.app-icon-o-rep-01:before {
+  content: "\ea38";
+}
+
+.app-icon-o-thermostat:before {
+  content: "\ea39";
+}
+
+.app-icon-o-alaarte-30:before {
+  content: "\ea3a";
+}
+
+.app-icon-o-alaarte-20:before {
+  content: "\ea3b";
+}
+
+.app-icon-o-alaarte-15:before {
+  content: "\ea3c";
+}
+
+.app-icon-o-Apple-Pencil:before {
+  content: "\ea3d";
+}
+
+.app-icon-o-light-dimmer:before {
+  content: "\ea3e";
+}
+
+.app-icon-o-doorbell-camera:before {
+  content: "\ea46";
+}
+
+.app-icon-o-doorlock:before {
+  content: "\ea45";
+}
+
+.app-icon-o-door-window-contact:before {
+  content: "\ea44";
+}
+
+.app-icon-o-keypad:before {
+  content: "\ea43";
+}
+
+.app-icon-o-light-bulb:before {
+  content: "\ea42";
+}
+
+.app-icon-o-smoke-detector:before {
+  content: "\ea41";
+}
+
+.app-icon-o-video-surveillance:before {
+  content: "\ea40";
+}
+
+.app-icon-o-motion-detector:before {
+  content: "\ea3f";
+}
