@@ -8,11 +8,12 @@ import Home from './home/Home';
 import LogIn from './user/LogIn';
 import ViewProfile from './user/ViewProfile';
 import Logout from './user/LogOut';
-import ProductDetails from './products/productDetails';
+import ProductDetails from './products/ProductDetails';
 import ShoppingCart from './shoppingcart/ShoppingCart';
 import Header from './global-connector/Header';
 import Footer from './global-connector/Footer';
 import TestPage from './testPage';
+import cookie from 'react-cookies';
 // netlify website: https://leeyonge.netlify.app
 
 class App extends React.Component {
@@ -20,7 +21,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       categories: []
-    }
+    }    
     this.urlConfigs = {
       imageResourceUrl: "",
       //apiServerUrl: "https://leeyongeapi.herokuapp.com"
@@ -36,7 +37,7 @@ class App extends React.Component {
             <Route exact path="/" render={() => (
               <Home urlConfigs={this.urlConfigs} />
             )} />
-            <Route path="/products" render={() => (
+            <Route path="/products/:slug?" render={() => (
               <Products urlConfigs={this.urlConfigs} />
             )} />
             <Route path="/signup" render={() => (
@@ -71,7 +72,7 @@ class App extends React.Component {
           </Switch>
         </div>
         <Footer />
-
+        
       </div>
     );
   }

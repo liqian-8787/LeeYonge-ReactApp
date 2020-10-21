@@ -41,7 +41,7 @@ class Home extends React.Component {
                 })
                 .then(data => {
                     resolve(data);
-
+                    
                 }).catch(err => {
                     reject(err);
                 })

@@ -16,7 +16,7 @@ class LogOut extends React.Component {
 
     handleLogOut(token,userData) {
         if(userData)
-            localStorage.removeItem("userData");  //clear userData anyway
+        localStorage.removeItem("userData");  //clear userData anyway
         //clear server session
         fetch(`${this.apiServerUrl}/api/users/logout`, {
             method: "POST",

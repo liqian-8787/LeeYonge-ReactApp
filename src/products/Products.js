@@ -4,6 +4,7 @@ import { Container, Row, Col, CardImg } from 'reactstrap';
 import Text from 'react-text';
 import { Button } from 'react-bootstrap';
 import Loader from '../global-connector/Loader';
+import ProductListContainer from './ProductListContainer'
 
 class Products extends React.Component {
 
@@ -14,14 +15,14 @@ class Products extends React.Component {
             visible: 15,
             error: false,
             loading: true,
-            categories: []
-
+            categories: [],
+            slug:this.props.match.params.slug,
         }
         this.getData = this.getData.bind(this);
         this.loadMore = this.loadMore.bind(this);
+        this.getProductsBySlug = this.getProductsBySlug.bind(this);
         this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;
         this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
-        this.getCategories = this.getCategories.bind(this);
     }
 
     loadMore() {
@@ -29,9 +30,9 @@ class Products extends React.Component {
             return { visible: prev.visible + 9 };
         });
     }
-    getData() {
+    getData(slug) {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiServerUrl}/api/allProducts`)
+            fetch(`${this.apiServerUrl}/api/allProducts/${slug}`)
                 .then(res => res.json())
                 .then(data => {
                     resolve(data);
@@ -41,39 +42,25 @@ class Products extends React.Component {
                 })
         })
     }
-    getCategories() {
-        return new Promise((resolve, reject) => {
-            fetch(`${this.apiServerUrl}/api/category`)
-                .then(res => res.json())
-                .then(data => {
-                    resolve(data);
 
-                }).catch(err => {
-                    reject(err);
-                })
-        })
-    }
-    componentDidMount() {
-
-        this.getData().then((data) => {
-            this.setState((state, props) => {
-                return {
+    getProductsBySlug(slug){             
+        slug = typeof slug ==='undefined'?"All":slug;       
+        this.getData(slug).then((data) => {          
+            this.setState((state, props) =>  ({
                     products: data.products,
+                    categories: data.allDistinctCategories,
                     loading: false,
-                }
-            });
-        })
-        this.getCategories().then((data) => {
-            this.setState((state, props) => {
-                console.log(data)
-                return {
-                    categories: data,
-                    loading: false,
-                }
-            });
+                })
+            );            
         })
     }
 
+    componentDidMount() {
+        this.getProductsBySlug(this.state.slug);       
+    }
+    componentWillReceiveProps(props){    
+        this.getProductsBySlug(props.match.params.slug);
+    }    
     render() {
         if (this.state.loading) {
             return (<Loader />)
@@ -84,48 +71,16 @@ class Products extends React.Component {
                         <Container className="products-container">
                             <h2>Products List</h2><br />
                             <div className="category-products-list">
-                            <div className="products-categories">
-                            <ul >
-                                {this.state.categories.map((category) => {
-                                    return (                                       
-                                            <ol value=""><a href="">{category.text}</a></ol>   
-                                    )
-                                })}
-                                  </ul>
-                            </div>
-                            <Row className="d-flex flex-wrap">
-                                {this.state.products.slice(0, this.state.visible).map((product) => {
-                                    const bestFlag = product.isBestSeller;
-                                    const promotionPrice = product.promotional_price;
-                                    return (
-                                        <Col xs="12" md="6" lg="4" className="product-item" key={product.id}>
-                                            {
-                                                bestFlag ? <div className="best-flag">Best Seller</div>
-                                                    : <div className="nobest"></div>
-                                            }
-                                            <div className="image-tile">
-                                                <Link to={`/product/pid=${product.id}`} >
-                                                    <CardImg className="product-image" src={`${this.imageResourceUrl}` + product.image_url} />
-                                                </Link>
-                                            </div>
-                                            <p className="title">{product.name}</p>
-                                            <div className="description">
-                                                <Text>{product.description.substr(0, 120)}</Text>
-                                            </div>
-                                            {promotionPrice ?
-                                                <div>
-                                                    <p>Price: <span className="origin-price">${product.price}</span></p>
-                                                    <p>New Price: <span>${product.promotional_price}</span></p>
-                                                </div>
-                                                : <p>Price: <span>${product.price}</span></p>
-                                            }
-
-                                        </Col>
-                                    )
-                                })
-                                }
-                            </Row>
-                           
+                                <div className="products-categories">
+                                    <ul >
+                                        {this.state.categories.map((category) => {
+                                            return (
+                                                <ol><Link to={`/products/${category.slug}`}>{category.text}</Link></ol>
+                                            )
+                                        })}
+                                    </ul>
+                                </div>
+                                <ProductListContainer products={this.state.products}  imageResourceUrl={this.imageResourceUrl} />                               
                             </div>
                             {
                                 (() => {

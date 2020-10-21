@@ -44,8 +44,8 @@ class LogIn extends React.Component {
     })}
     
     onLogin = async (event) => {  
-        event.preventDefault();
-        
+        event.preventDefault();     
+
         await fetch(`${this.apiServerUrl}/api/users/login`, {
             method: "POST",
             mode: "cors",
@@ -71,11 +71,11 @@ class LogIn extends React.Component {
         })
         .then(res => {
             if(res.status===200){
-                cookie.save("token",res.token,{path:'/'});
-                localStorage.setItem("userData","login");
+                cookie.save("token",res.token,{path:'/'});      
+                localStorage.setItem("userData","login");         
                 this.setState({
                     successInfo: 'ok'
-                })
+                })                
             }
             this.setState({
                 errorResponses: {

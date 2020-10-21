@@ -15,7 +15,7 @@ class Header extends React.Component {
     }
     isloggedin() {
         return localStorage.getItem("userData") ? true : false;
-    }
+    }  
     render() {
         return (<div>
             <Navbar inverse collapseOnSelect staticTop className="nav">
@@ -51,20 +51,18 @@ class Header extends React.Component {
                                 View Profile
                             </NavLink>
                         </NavItem>
+                        <NavItem>
                         {
-                            this.isloggedin() ?
-                            <NavItem>
-                                <NavLink activeClassName='active' tag={RRNavLink}  to='/logout'>
-                                    Log Out
-                                </NavLink>
-                            </NavItem> 
-                            :
-                            <NavItem>
-                                <NavLink activeClassName='active' tag={RRNavLink}  to='/login'>
-                                    Log In
-                                </NavLink>
-                            </NavItem>
+                            this.isloggedin()  ?
+                            <NavLink activeClassName='active' tag={RRNavLink}  to='/logout'>
+                                Log Out
+                            </NavLink>
+                            :    
+                            <NavLink activeClassName='active' tag={RRNavLink}  to='/login'>
+                                Log In
+                            </NavLink>
                         }
+                        </NavItem>
                         <NavItem>
                             <NavLink activeClassName='active' tag={RRNavLink} to='/shoppingcart'>
                                  <Icon icon={shoppingCartOutlined} className="shopping-cart-icon" />
