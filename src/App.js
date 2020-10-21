@@ -24,8 +24,8 @@ class App extends React.Component {
     }    
     this.urlConfigs = {
       imageResourceUrl: "",
-      //apiServerUrl: "https://leeyongeapi.herokuapp.com"
-      apiServerUrl : "http://localhost:8080"
+      apiServerUrl: "https://leeyongeapi.herokuapp.com"
+      //apiServerUrl : "http://localhost:8080"
     }
   }
   render() {
@@ -72,7 +72,7 @@ class App extends React.Component {
           </Switch>
         </div>
         <Footer />
-        
+
       </div>
     );
   }
