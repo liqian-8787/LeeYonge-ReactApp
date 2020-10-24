@@ -12,7 +12,7 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "jquery": "^3.5.1",
-    "netlify-cli": "^2.65.0",
+    "netlify-cli": "^2.65.6",
     "react": "^16.13.1",
     "react-bootstrap": "^0.33.1",
     "react-bootstrap-icons": "^1.0.0",

@@ -135,12 +135,12 @@ class ProductDetails extends React.Component {
                     }
                     <div className="product-details-container container">
                         <div className="product-detail">
-                            <div className="float-lg-left">
+                            <div>
                                 {this.state.product.image_url ?
                                     <img className="detail-image" src={this.state.product.image_url} /> : <span></span>
                                 }
                             </div>
-                            <form className="float-lg-right" onSubmit={(e) => { this.handleSubmit(e, this.state.product.id) }}>
+                            <form  onSubmit={(e) => { this.handleSubmit(e, this.state.product.id) }}>
                                 <h3>{this.state.product.name} </h3>
                                 {promotionPrice ?
                                     <div>

@@ -9,21 +9,21 @@ class ProductListContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            visible:15,
+            visible: 0,
             loading: true,
-            products:[]           
+            products: []
         }
         this.imageResourceUrl = this.props.imageResourceUrl;
         this.getProductsFromProps = this.getProductsFromProps.bind(this);
-    } 
-    getProductsFromProps(products){        
-        this.setState({products:products})
     }
-    componentDidMount(){
-        this.getProductsFromProps(this.props.products);
+    getProductsFromProps(products,visible) {
+        this.setState({ products: products, visible:visible })
     }
-    componentWillReceiveProps(props){
-        this.getProductsFromProps(props.products);
+    componentDidMount() {
+        this.getProductsFromProps(this.props.products,this.props.visible);
+    }
+    componentWillReceiveProps(props) {
+        this.getProductsFromProps(props.products,props.visible);
     }
     render() {
         return (
@@ -32,35 +32,43 @@ class ProductListContainer extends React.Component {
                     const bestFlag = product.isBestSeller;
                     const promotionPrice = product.promotional_price;
                     return (
-                        <Col xs="12" md="6" lg="4" className="product-item" key={product.id}>
-                            {
-                                bestFlag ? <div className="best-flag">Best Seller</div>
-                                    : <div className="nobest"></div>
-                            }
-                            <div className="image-tile">
-                                <Link to={`/product/pid=${product.id}`} >
-                                    <CardImg className="product-image" src={`${this.imageResourceUrl}` + product.image_url} />
+                        <Col  className="product-item" key={product.id}>
+                            <div className="mobile-product-image">
+                                {
+                                    bestFlag ? <div className="best-flag hidden-xs" >Best Seller</div>
+                                        : <div className="nobest hidden-xs"></div>
+                                }
+                             
+                                <Link to={`/product/pid=${product.id}`}  className="list-image-tile">
+                                    <img className="img img-responsive list-image" src={`${this.imageResourceUrl}` + product.image_url} />
                                 </Link>
+                              
                             </div>
-                            <p className="title">{product.name}</p>
-                            <div className="description">
-                                <Text>{product.description.substr(0, 120)}</Text>
-                            </div>
-                            {promotionPrice ?
-                                <div>
-                                    <p>Price: <span className="origin-price">${product.price}</span></p>
-                                    <p>New Price: <span>${product.promotional_price}</span></p>
+                            <div className="mobile-product-text">
+                            {
+                                    bestFlag ? <div className="best-flag visible-xs-inline-block">Best Seller</div>
+                                        : <div></div>
+                                }
+                                <p className="title">{product.name}</p>
+                                
+                                <div className="description">
+                                <p>Description:</p>                                    
+                                    <p>{product.description.substr(0, 120)}</p>
                                 </div>
-                                : <p>Price: <span>${product.price}</span></p>
-                            }
-
+                                {promotionPrice ?
+                                    <div className="list-price">
+                                        <p>Price: <span className="origin-price">${product.price}</span></p>
+                                        <p>New Price: <span>${product.promotional_price}</span></p>
+                                    </div>
+                                    : <p>Price: <span>${product.price}</span></p>
+                                }
+                            </div>
                         </Col>
                     )
                 })
                 }
             </Row>
         )
-
     }
 }
 

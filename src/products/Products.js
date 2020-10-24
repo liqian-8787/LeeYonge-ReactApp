@@ -36,7 +36,6 @@ class Products extends React.Component {
                 .then(res => res.json())
                 .then(data => {
                     resolve(data);
-
                 }).catch(err => {
                     reject(err);
                 })
@@ -71,22 +70,22 @@ class Products extends React.Component {
                         <Container className="products-container">
                             <h2>Products List</h2><br />
                             <div className="category-products-list">
-                                <div className="products-categories">
-                                    <ul >
+                                <div className="products-categories">                                   
+                                    <ul className="desktop-category">
                                         {this.state.categories.map((category) => {
                                             return (
-                                                <ol><Link to={`/products/${category.slug}`}>{category.text}</Link></ol>
+                                                <li><Link to={`/products/${category.slug}`}>{category.text}</Link></li>
                                             )
                                         })}
                                     </ul>
                                 </div>
-                                <ProductListContainer products={this.state.products}  imageResourceUrl={this.imageResourceUrl} />                               
+                                <ProductListContainer products={this.state.products}  visible={this.state.visible} imageResourceUrl={this.imageResourceUrl} />                               
                             </div>
                             {
                                 (() => {
                                     if (this.state.visible < this.state.products.length) {
                                         return (
-                                            <div className="center-block">
+                                            <div className="load-more">
                                                 <Button onClick={this.loadMore} className="btn btn-primary load-more">Load more</Button>
                                             </div>
                                         )
