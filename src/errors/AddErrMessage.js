@@ -15,7 +15,7 @@ render(){
             <Container>
                 {
                     this.errorCode?
-                    <div className="alert-danger welcome-banner ">You are not lodded in yet. Please <Link to="/login" className="welcome-link"><span>log in</span></Link></div>
+                    <div className="alert-danger welcome-banner ">You are not log in yet. Please <Link to="/login" className="welcome-link"><span>log in</span></Link></div>
                     :this.isAdded?
                     <div className="alert-success welcome-banner">
                     A new product is added. Please check your <Link to='/shoppingcart' style={{textDecoration:'underline'}}>Cart</Link>
