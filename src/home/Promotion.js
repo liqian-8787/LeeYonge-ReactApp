@@ -52,8 +52,20 @@ class Promotion extends React.Component {
                             arrows: false,
                             infinite: true,
                             centerMode: false,
+                            slidesToShow: 2,
                             slidesToShow: this.state.promotions.length >= 3?3:2,
                             slidesToScroll: this.state.promotions.length >= 3?3:1,
+                            centerPadding: '0'
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            arrows: false,
+                            infinite: true,
+                            centerMode: false,
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
                             centerPadding: '0'
                         }
                     },

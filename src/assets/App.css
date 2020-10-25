@@ -232,6 +232,7 @@ Boostrap breakpoins:
 .title {
   font-size: 18px;
   min-height: 32px;
+  margin-top:10px;
 }
 
 .category-products-list {
@@ -240,7 +241,7 @@ Boostrap breakpoins:
 
 .product-item {
   border-bottom: 1px solid #aaa;
-  border-radius: none;
+  border-radius: 0;
   display: flex;
 }
 
@@ -282,7 +283,7 @@ Boostrap breakpoins:
 .product-image {
   max-height: 250px;
   max-width: 250px;
-  height: 100%;
+  width: 100%;
   padding: 5px;
   text-align: center;
   display: block;
@@ -292,6 +293,9 @@ Boostrap breakpoins:
   margin-bottom: 20px;
 }
 
+.tiles .product-image{
+  width: auto;
+}
 .image-tile {
   height: 210px;
 }
@@ -370,7 +374,11 @@ select {
 .promotiom-image-container {
   min-height: 200px
 }
-
+.promotiom-image-container > a{
+  display: block;
+  max-height: 200px;
+  overflow: hidden;
+}
 .promotion-item {
   padding: 15px;
 }
@@ -445,10 +453,7 @@ Button {
   margin-bottom: 3em;
 }
 
-.product-image, .promotiom-image-container .product-image {
-  max-height: 200px;
-  max-width: 200px;
-}
+
 
 .tile {
   width: 100%;
@@ -789,17 +794,19 @@ Button {
   .mobile-product-text .description Text, .mobile-product-text .description p, .mobile-product-text .list-price p {
     font-size: 12px;
   }
-  .mobile-product-image {
-    max-width: 120px;
+  .mobile-product-image {   
     padding-top: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 15px;   
   }
   .list-image-tile .list-image {
-    width: auto ;
-  max-width: 100% ;
+    width: 100%;
+    height: auto;
   }
   .mobile-product-image .list-image-tile {
-    width: 100%;
+    width: 120px;
+    display: flex;
+    overflow: hidden;
+    height: 120px;
   }
   .load-more {
     margin-top: 10px;
