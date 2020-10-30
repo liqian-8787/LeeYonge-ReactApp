@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { Container, Row, Col, CardImg } from 'reactstrap';
-import Text from 'react-text';
+import { Container } from 'reactstrap';
 import { Button } from 'react-bootstrap';
 import Loader from '../global-connector/Loader';
 import ProductListContainer from './ProductListContainer'
@@ -74,7 +73,7 @@ class Products extends React.Component {
                                     <ul className="desktop-category">
                                         {this.state.categories.map((category) => {
                                             return (
-                                                <li><Link to={`/products/${category.slug}`}>{category.text}</Link></li>
+                                                <li key={category.slug}><Link to={`/products/${category.slug}`}>{category.text}</Link></li>
                                             )
                                         })}
                                     </ul>

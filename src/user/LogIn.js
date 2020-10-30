@@ -19,39 +19,40 @@ class LogIn extends React.Component {
         this.Email = this.Email.bind(this);
         this.Password = this.Password.bind(this);
         this.onLogin = this.onLogin.bind(this);
-        this.apiServerUrl =this.props.urlConfigs.apiServerUrl;         
+        this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
     }
 
     getUserInfo() {
         return new Promise((resolve, reject) => {
-            let token = cookie.load("token"); 
+            let token = cookie.load("token");
             fetch(`${this.apiServerUrl}/api/users/profile`, {
                 method: "GET",
                 mode: "cors",
-                headers:{
+                headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     credentials: 'include',
-                    cookies:JSON.stringify({token:token}),
+                    cookies: JSON.stringify({ token: token }),
                 }
             })
-            .then(res => res.json())
-            .then(data => {     
-                resolve(data);   
-        })   .catch(err => {
-            reject(err);
-        })    
-    })}
-    
-    onLogin = async (event) => {  
-        event.preventDefault();     
+                .then(res => res.json())
+                .then(data => {
+                    resolve(data);
+                }).catch(err => {
+                    reject(err);
+                })
+        })
+    }
+
+    onLogin = async (event) => {
+        event.preventDefault();
 
         await fetch(`${this.apiServerUrl}/api/users/login`, {
             method: "POST",
             mode: "cors",
             headers: new Headers({
                 'Accept': '*/*',
-                'Content-Type': 'application/json'               
+                'Content-Type': 'application/json'
             }),
             body: JSON.stringify({
                 email: this.state.email,
@@ -66,26 +67,26 @@ class LogIn extends React.Component {
                         }
                     }
                 )
-            }       
+            }
             return response.json();
         })
-        .then(res => {
-            if(res.status===200){
-                cookie.save("token",res.token,{path:'/'});      
-                localStorage.setItem("userData","login");         
-                this.setState({
-                    successInfo: 'ok'
-                })                
-            }
-            this.setState({
-                errorResponses: {
-                    code: this.state.errorResponses.code,
-                    errors: res.errors[0].errorMessage
+            .then(res => {
+                if (res.status === 200) {
+                    cookie.save("token", res.token, { path: '/' });
+                    localStorage.setItem("userData", "login");
+                    this.setState({
+                        successInfo: 'ok'
+                    })
                 }
-            }) 
-         
-        })
-        .catch(err => console.log(err))
+                this.setState({
+                    errorResponses: {
+                        code: this.state.errorResponses.code,
+                        errors: res.errors[0].errorMessage
+                    }
+                })
+
+            })
+            .catch(err => console.log(err))
     }
 
 
@@ -104,7 +105,7 @@ class LogIn extends React.Component {
             password: event.target.value,
         })
     }
-    
+
     render() {
         return (
             <div className="page-wrap bg-lightgray">
@@ -127,13 +128,13 @@ class LogIn extends React.Component {
                             <FormGroup>
                                 <Label for="examplePassword">Password</Label>
                                 <Input type="password" name="password" id="examplePassword" placeholder="password placeholder"
-                                    onChange={this.Password} onKeyDown={this.handleEnter}/>
+                                    onChange={this.Password} onKeyDown={this.handleEnter} />
                             </FormGroup>
-                            <Button  color="primary" type='submit'>Log in</Button>
+                            <Button color="primary" type='submit'>Log in</Button>
                         </Form>
                         {
-                            this.state.successInfo?
-                            <Redirect to="/"></Redirect>:<Redirect  to="/login"></Redirect>
+                            this.state.successInfo ?
+                                <Redirect to="/"></Redirect> : <Redirect to="/login"></Redirect>
                         }
                         <br />
                         <br />

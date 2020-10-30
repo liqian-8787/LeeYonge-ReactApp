@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Link, NavLink as RRNavLink, } from 'react-router-dom';
-import {  NavLink } from 'reactstrap';
+import { NavLink} from 'reactstrap';
 import { Icon } from '@iconify/react';
 import logo from '../assets/leeyonge-top.png';
 import { Navbar, Nav, NavItem } from "react-bootstrap";
@@ -9,14 +9,20 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            islogin: false
+            islogin: false,
+            dropdownOpen:false
         }
         this.isloggedin = this.isloggedin.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
     isloggedin() {
         return localStorage.getItem("userData") ? true : false;
-    }  
-    render() {
+    }
+    toggle(){
+        this.setState({dropdownOpen:!this.state.dropdownOpen});
+    }
+    
+    render() {        
         return (<div>
             <Navbar inverse collapseOnSelect staticTop className="nav">
                 <Navbar.Header>
@@ -29,7 +35,7 @@ class Header extends React.Component {
 
                     <Navbar.Toggle />
                 </Navbar.Header>
-                <Navbar.Collapse>                   
+                <Navbar.Collapse>
                     <Nav navbar>
                         <NavItem>
                             <NavLink activeClassName='active' tag={RRNavLink} exact to='/'>
@@ -42,32 +48,32 @@ class Header extends React.Component {
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink activeClassName='active' tag={RRNavLink}  to='/signup'>
+                            <NavLink activeClassName='active' tag={RRNavLink} to='/signup'>
                                 Sign Up
                             </NavLink>
+                        </NavItem>                      
+                        <NavItem>
+                            {
+                                this.isloggedin() ?
+                                    <NavLink activeClassName='active' tag={RRNavLink} to='/logout'>
+                                        Log Out
+                            </NavLink>
+                                    :
+                                    <NavLink activeClassName='active' tag={RRNavLink} to='/login'>
+                                        Log In
+                            </NavLink>
+                            }
                         </NavItem>
                         <NavItem>
-                            <NavLink activeClassName='active' tag={RRNavLink} to='/viewprofile'>
-                                View Profile
+                            <NavLink activeClassName='active' tag={RRNavLink} to='/contactus'>
+                                Contact Us
                             </NavLink>
-                        </NavItem>
-                        <NavItem>
-                        {
-                            this.isloggedin()  ?
-                            <NavLink activeClassName='active' tag={RRNavLink}  to='/logout'>
-                                Log Out
-                            </NavLink>
-                            :    
-                            <NavLink activeClassName='active' tag={RRNavLink}  to='/login'>
-                                Log In
-                            </NavLink>
-                        }
                         </NavItem>
                         <NavItem>
                             <NavLink activeClassName='active' tag={RRNavLink} to='/shoppingcart'>
-                                 <Icon icon={shoppingCartOutlined} className="shopping-cart-icon" />
+                                <Icon icon={shoppingCartOutlined} className="shopping-cart-icon" />
                             </NavLink>
-                        </NavItem>
+                        </NavItem> 
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

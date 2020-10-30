@@ -1,9 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { Container, Row, Col, CardImg } from 'reactstrap';
-import Text from 'react-text';
-import { Button } from 'react-bootstrap';
-import Loader from '../global-connector/Loader';
+import { Row, Col } from 'reactstrap';
 class ProductListContainer extends React.Component {
 
     constructor(props) {
@@ -22,7 +19,7 @@ class ProductListContainer extends React.Component {
     componentDidMount() {
         this.getProductsFromProps(this.props.products,this.props.visible);
     }
-    componentWillReceiveProps(props) {
+    UNSAFE_componentWillReceiveProps(props) {
         this.getProductsFromProps(props.products,props.visible);
     }
     render() {
@@ -37,8 +34,7 @@ class ProductListContainer extends React.Component {
                                 {
                                     bestFlag ? <div className="best-flag hidden-xs" >Best Seller</div>
                                         : <div className="nobest hidden-xs"></div>
-                                }
-                             
+                                }                             
                                 <Link to={`/product/pid=${product.id}`}  className="list-image-tile">
                                     <img className="img img-responsive list-image" src={`${this.imageResourceUrl}` + product.image_url} />
                                 </Link>

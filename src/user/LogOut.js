@@ -40,7 +40,7 @@ class LogOut extends React.Component {
             return response.json();
         }).then(res => {
             console.log(res)
-            if (res.status == 200) {
+            if (res.status === 200) {
                 this.setState({ successInfo: "ok" })
                 cookie.remove('token', { path: '/' });
             } else {
