@@ -13,7 +13,6 @@ import ShoppingCart from './shoppingcart/ShoppingCart';
 import Header from './global-connector/Header';
 import Footer from './global-connector/Footer';
 import TestPage from './testPage';
-// netlify website: https://leeyonge.netlify.app
 
 class App extends React.Component {
   constructor(props) {
