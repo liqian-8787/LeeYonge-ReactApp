@@ -70,6 +70,11 @@ class Header extends React.Component {
                             </NavLink>
                         </NavItem>
                         <NavItem>
+                            <NavLink activeClassName='active' tag={RRNavLink} to='/orderhistory'>
+                                Order History
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
                             <NavLink activeClassName='active' tag={RRNavLink} to='/shoppingcart'>
                                 <Icon icon={shoppingCartOutlined} className="shopping-cart-icon" />
                             </NavLink>

@@ -324,19 +324,27 @@ Boostrap breakpoins:
   width: calc(100% - 8px);
 }
 
-.cart-products {
+.cart-products, 
+.order-history-products {
   padding-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #ddd;
 }
+.order-history-products{
+  margin-bottom:20px;
+}
 
+.order-history-container h3{
+  margin-bottom:20px;
+}
 .cart-image {
   max-width: 150px;
   max-height: 150px;
   margin-left: 60px;
 }
 
-.cart-products h4 {
+.cart-products h4,
+.order-history-products h4{
   margin-top: 0;
   font-size: 1.2em
 }
@@ -493,7 +501,7 @@ Button {
 
 .fade {
   opacity: inherit;
-}
+} 
 
 .alert {
   padding: 5px;
@@ -783,6 +791,38 @@ Button {
   margin: auto;
 }
 
+.update-decrement,
+.update-increment{
+cursor:pointer; 
+position:relative;
+}
+.update-input a:hover{
+  text-decoration:none;
+}
+.markup{
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+}
+.cart-products .row div,
+.order-history-products .row div{
+  padding-left:0;
+}
+
+.total-price{ 
+  border:1px solid #ddd;
+  display:block;
+  padding:10px
+}
+.cart-total{
+  display: flex;
+  justify-content:space-between;
+  font-size:15px;
+}
+.fade-out{
+  animation: fadeOut ease 5s;
+}
 .contact-us .slick-slider .slick-slide>div {
   border: 1px solid#cecece;
   width: 85%;
@@ -842,6 +882,10 @@ Button {
 .delete-update .visible-xs{
   margin-right: 10px;
 }
+.text-bold{
+  font-weight:700
+}
+
 
 @media(max-width:767px) {
   .products-container {
@@ -917,8 +961,12 @@ Button {
   .load-more {
     margin-top: 10px;
   }
-}
 
+  .cart-products .row div:nth-child(2),
+  .order-history-products .row div:nth-child(2){
+    margin-bottom:10px;
+}
+}
 @media(min-width:768px) {
   .navbar-collapse.collapse {
     display: flex!important;
@@ -1030,10 +1078,7 @@ Button {
   .contact-us p{
     font-size:18px;
   }
-  .text-bold{
-    font-weight:700
-  }
-
+ 
 
   /*test page*/
   .unlimited-container {
@@ -1098,6 +1143,10 @@ Button {
     padding: 20px 0 0px 25px;
   
   }
+  .cart-products p,
+  .cart-products span{
+    font-size:16px;
+  }
  
 
   /* test page*/
@@ -1125,10 +1174,9 @@ Button {
     justify-content: flex-end;
     padding-right: 40px;
   }
-
-.contactus-scan{
+  .contactus-scan{
   width:25%;
-}
+  } 
 }
 
 @keyframes breath {
@@ -1136,6 +1184,14 @@ Button {
   50% {
     width: 15px;
     height: 15px;
+  }
+}
+@keyframes fadeOut {
+  20% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
   }
 }
 

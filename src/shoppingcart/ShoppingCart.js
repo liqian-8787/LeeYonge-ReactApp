@@ -25,8 +25,7 @@ class ShoppingCart extends React.Component {
                 text: ''
             },
             loading: true,
-            isLoggedIn: false,
-            offset: { left: 150, top: 50 }
+            isLoggedIn: false
 
         }
         this.getCart = this.getCart.bind(this);
@@ -125,7 +124,8 @@ class ShoppingCart extends React.Component {
                             loading: false,
                             isLoggedIn: true
                         }
-                    })
+                    });
+                    setTimeout(() => this.setState({ message: '' }), 5000);
 
                     resolve(data);
                     this.updateCartState();
@@ -183,7 +183,8 @@ class ShoppingCart extends React.Component {
 
                     }, () => {
                         this.updateCartState();
-                    })
+                    });
+                    setTimeout(() => this.setState({ message: '' }), 5000);
                 }
                 return response.json()
             })
@@ -210,8 +211,7 @@ class ShoppingCart extends React.Component {
                     credentials: 'include',
                     cookies: JSON.stringify({ token: token }),
                 }
-            })
-                .then(res => res.json())
+            }).then(res => res.json())
                 .then(data => {
                     console.log(data.orders)
                     this.setState(() => {
@@ -240,14 +240,14 @@ class ShoppingCart extends React.Component {
                         <div>
                             {this.state.message.type ?
                                 <Container>
-                                    <div className={`${this.state.message.type === "delete" ? 'alert-danger' : "alert-success"} welcome-banner`}>
+                                    <div className={`${this.state.message.type === "delete" ? 'alert-danger' : "alert-success"} fade-out welcome-banner`}>
                                         {this.state.message.text}
                                     </div>
                                 </Container> : <div></div>
                             }
                             <Container className="cart-products-container">
                                 <h3>Shopping Cart</h3><br />
-                                <div className=""></div>
+
                                 <div className="cart-subtotal">Subtotal: <span className="text-success">${this.state.cart_total}</span></div>
                                 <div className="check-out-wraper">
                                     <button className="btn btn-primary check-out" onClick={this.checkOut}>check out</button>
@@ -289,12 +289,12 @@ class ShoppingCart extends React.Component {
                                                             <div className="update-input">
                                                                 <FormGroup>
                                                                     <InputGroup>
-                                                                        <InputGroup.Addon><a onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}>-</a></InputGroup.Addon>
-                                                                        <FormControl type="number"  min="0" id="quantity" value={product.purchased_quantity} onChange={(e) => { if (e.target.value) this.handleUpdate({ pid: product.id, quantity: e.target.value }) }} />
-                                                                        <InputGroup.Addon><a onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'increment')}>+</a></InputGroup.Addon>
+                                                                        <InputGroup.Addon className="update-decrement" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}><div className="markup"></div><a>-</a></InputGroup.Addon>
+                                                                        <FormControl type="number" min="0" id="quantity" value={product.purchased_quantity} onChange={(e) => { if (e.target.value) this.handleUpdate({ pid: product.id, quantity: e.target.value }) }} />
+                                                                        <InputGroup.Addon className="update-increment" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'increment')}><div className="markup"></div><a>+</a></InputGroup.Addon>
                                                                     </InputGroup>
                                                                 </FormGroup>
-                                                             
+
                                                                 {/* <button className="update-quantity" onClick={() => this.updateQuantity({ pid: product.id, quantity: product.purchased_quantity }, 'decrement')}>
                                                                     &mdash;
                                                                 </button>
@@ -305,7 +305,7 @@ class ShoppingCart extends React.Component {
 
                                                             </div>
                                                             <div className="delete-update">
-                                                                <Popup className="popup-content" trigger={<div className="visible-xs" ><i className="app-icon-o app-icon-o-trash app-icon-size-medium "></i></div> } position="top center">
+                                                                <Popup className="popup-content" trigger={<div className="visible-xs" ><i className="app-icon-o app-icon-o-trash app-icon-size-medium "></i></div>} position="top center">
                                                                     {close => (
                                                                         <div className="popup-inner">
                                                                             <div>Are you sure to delete this product?</div>
@@ -331,7 +331,7 @@ class ShoppingCart extends React.Component {
                                                                         </div>
                                                                     )}
                                                                 </Popup>
-                                                                
+
                                                                 <button className="btn btn-primary" type="submit" onClick={() => { this.handleUpdate({ pid: product.id, quantity: product.purchased_quantity }) }}>update</button>
                                                             </div>
                                                         </div>
@@ -351,6 +351,7 @@ class ShoppingCart extends React.Component {
                 else {
                     return (
                         <Container>
+                            <h3>Shopping Cart</h3>
                             <div className="alert-info welcome-banner">Your Cart is empty, please go check <Link to="/products">all proudcts</Link>
                             </div>
                         </Container>

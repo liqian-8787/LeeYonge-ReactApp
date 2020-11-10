@@ -10,6 +10,7 @@ import ContactUs from './global-connector/ContactUs';
 import Logout from './user/LogOut';
 import ProductDetails from './products/ProductDetails';
 import ShoppingCart from './shoppingcart/ShoppingCart';
+import OrderHistory from './shoppingcart/OrderHistory';
 import Header from './global-connector/Header';
 import Footer from './global-connector/Footer';
 import TestPage from './testPage';
@@ -22,8 +23,8 @@ class App extends React.Component {
     }    
     this.urlConfigs = {
       imageResourceUrl: "",
-      apiServerUrl: "https://leeyonge-api.herokuapp.com"
-      //apiServerUrl : "http://localhost:8000"
+      //apiServerUrl: "https://leeyonge-api.herokuapp.com"
+      apiServerUrl : "http://localhost:8000"
     }
   }
   render() {
@@ -54,6 +55,9 @@ class App extends React.Component {
 
             <Route path="/shoppingcart" render={() => (
               <ShoppingCart urlConfigs={this.urlConfigs} />
+            )} />
+               <Route path="/orderhistory" render={() => (
+              <OrderHistory urlConfigs={this.urlConfigs} />
             )} />
 
             <Route path="/product/pid=:id" render={() => (
