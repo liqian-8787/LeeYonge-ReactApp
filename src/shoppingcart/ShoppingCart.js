@@ -38,8 +38,7 @@ class ShoppingCart extends React.Component {
         this.checkOut = this.checkOut.bind(this);
         this.maxDescriptionLength = 150;
     }
-
-
+  
 
     getCart() {
         let token = cookie.load("token");
@@ -212,8 +211,7 @@ class ShoppingCart extends React.Component {
                     cookies: JSON.stringify({ token: token }),
                 }
             }).then(res => res.json())
-                .then(data => {
-                    console.log(data.orders)
+                .then(data => {                    
                     this.setState(() => {
                         return {
                             products: [],

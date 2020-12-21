@@ -12,9 +12,13 @@ class ProductListContainer extends React.Component {
         }
         this.imageResourceUrl = this.props.imageResourceUrl;
         this.getProductsFromProps = this.getProductsFromProps.bind(this);
+        this.sortByCategory= this.sortByCategory.bind(this);
+    }
+    sortByCategory(obj){
+       return obj.sort(function(a,b){return a.category < b.category ? -1 :1})
     }
     getProductsFromProps(products,visible) {
-        this.setState({ products: products, visible:visible })
+        this.setState({ products: this.sortByCategory(products), visible:visible })
     }
     componentDidMount() {
         this.getProductsFromProps(this.props.products,this.props.visible);
@@ -52,7 +56,7 @@ class ProductListContainer extends React.Component {
                                     <p>{product.description.substr(0, 120)}</p>
                                 </div>
                                 {promotionPrice ?
-                                    <div className="list-price">
+                                     <div className="list-price">
                                         <p>Price: <span className="origin-price">${product.price}</span></p>
                                         <p>New Price: <span>${product.promotional_price}</span></p>
                                     </div>

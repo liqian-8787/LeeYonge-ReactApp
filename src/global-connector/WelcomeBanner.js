@@ -3,13 +3,13 @@ import { withRouter, Link } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 class WelcomeBanner extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            isLogedIn: false
+            firstName: this.props.userInfo.firstName,
+            lastName: this.props.userInfo.lastName,
+            email: this.props.userInfo.email,
+            isLoggedIn: this.props.userInfo.isLoggedIn
         }
     }
 

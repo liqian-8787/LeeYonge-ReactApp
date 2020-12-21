@@ -22,8 +22,12 @@ class Products extends React.Component {
         this.getProductsBySlug = this.getProductsBySlug.bind(this);
         this.imageResourceUrl = this.props.urlConfigs.imageResourceUrl;
         this.apiServerUrl = this.props.urlConfigs.apiServerUrl;
+        this.sortByCategory= this.sortByCategory.bind(this);
     }
 
+    sortByCategory(obj){
+        return obj.sort(function(a,b){return a.category < b.category ? -1 :1})
+     }
     loadMore() {
         this.setState((prev) => {
             return { visible: prev.visible + 9 };
@@ -43,14 +47,14 @@ class Products extends React.Component {
 
     getProductsBySlug(slug){             
         slug = typeof slug ==='undefined'?"All":slug;       
-        this.getData(slug).then((data) => {          
+        this.getData(slug).then((data) => {         
             this.setState((state, props) =>  ({
                     products: data.products,
-                    categories: data.allDistinctCategories,
+                    categories:this.sortByCategory(data.allDistinctCategories),
                     loading: false,
                 })
             );            
-        })
+        })        
     }
 
     componentDidMount() {
@@ -71,7 +75,7 @@ class Products extends React.Component {
                             <div className="category-products-list">
                                 <div className="products-categories">                                   
                                     <ul className="desktop-category">
-                                        {this.state.categories.map((category) => {
+                                        {this.state.categories.map((category) => {                                         
                                             return (
                                                 <li key={category.slug}><Link to={`/products/${category.slug}`}>{category.text}</Link></li>
                                             )

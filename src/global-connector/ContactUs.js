@@ -76,7 +76,6 @@ class ContactUs extends React.Component {
                             arrows: false,
                             infinite: true,
                             centerMode: false,
-                            slidesToShow: 2,
                             slidesToShow: items.length >= 3 ? 3 : 2,
                             slidesToScroll: items.length >= 3 ? 3 : 1,
                             centerPadding: '0'

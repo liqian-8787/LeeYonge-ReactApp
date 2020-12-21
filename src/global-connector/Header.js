@@ -21,7 +21,9 @@ class Header extends React.Component {
     toggle(){
         this.setState({dropdownOpen:!this.state.dropdownOpen});
     }
-    
+    componentDidMount(){
+        this.isloggedin();
+    }
     render() {        
         return (<div>
             <Navbar inverse collapseOnSelect staticTop className="nav">
@@ -47,6 +49,18 @@ class Header extends React.Component {
                                 Products
                             </NavLink>
                         </NavItem>
+                       
+                        <NavItem>
+                            <NavLink activeClassName='active' tag={RRNavLink} to='/contactus'>
+                                Contact Us
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink activeClassName='active' tag={RRNavLink} to='/orderhistory'>
+                                Your purchase
+                            </NavLink>
+                        </NavItem>
+                        
                         <NavItem>
                             <NavLink activeClassName='active' tag={RRNavLink} to='/signup'>
                                 Sign Up
@@ -63,16 +77,6 @@ class Header extends React.Component {
                                         Log In
                             </NavLink>
                             }
-                        </NavItem>
-                        <NavItem>
-                            <NavLink activeClassName='active' tag={RRNavLink} to='/contactus'>
-                                Contact Us
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink activeClassName='active' tag={RRNavLink} to='/orderhistory'>
-                                Order History
-                            </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink activeClassName='active' tag={RRNavLink} to='/shoppingcart'>

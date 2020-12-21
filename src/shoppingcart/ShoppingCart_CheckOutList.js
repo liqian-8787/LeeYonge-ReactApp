@@ -18,11 +18,14 @@ class OrderList extends React.Component {
 
         return (
             <Container>
-                <h2>Your order list:</h2>
+                 <div className="alert-info check-out">
+                    <p>Please come to pick up within 7 days.</p>
+                </div>
+                <h2>Your order list: </h2>
                 <div className="total-price">
-                <div className="cart-total"><span>Subtotal: </span><span className="text-success">${this.props.orders.cart_total.toFixed(2)}</span></div>
-                <div className="cart-total"><span>HST: </span><span className="text-success">${parseFloat(this.props.orders.cart_total * 0.13).toFixed(2)}</span></div>
-                <div className="cart-total"><span>Order Total: </span><span className="text-success">${parseFloat(this.props.orders.cart_total * 1.13).toFixed(2)}</span></div>
+                    <div className="cart-total"><span>Subtotal: </span><span className="text-success">${this.props.orders.cart_total.toFixed(2)}</span></div>
+                    <div className="cart-total"><span>HST: </span><span className="text-success">${parseFloat(this.props.orders.cart_total * 0.13).toFixed(2)}</span></div>
+                    <div className="cart-total"><span>Order Total: </span><span className="text-success">${parseFloat(this.props.orders.cart_total * 1.13).toFixed(2)}</span></div>
                 </div>
                 {this.props.orders.products.map((product) => {
                     return (
@@ -37,7 +40,7 @@ class OrderList extends React.Component {
                                         <div className="col-xs-12 col-md-4">
                                             <p>Description:</p>
                                             <Link to={`/product/pid=${product.id}`}>
-                                            {product.description.length > this.maxDescriptionLength ? `${product.description.slice(0, this.maxDescriptionLength)}...` : product.description}
+                                                {product.description.length > this.maxDescriptionLength ? `${product.description.slice(0, this.maxDescriptionLength)}...` : product.description}
                                             </Link>
                                         </div>
                                         <div className="col-xs-12 col-md-4">
@@ -61,11 +64,13 @@ class OrderList extends React.Component {
                                         </div>
                                     </Row>
                                 </div>
+
                             </div>
                         </div>
                     )
                 })
                 }
+               
             </Container>
         )
     }
